@@ -312,31 +312,93 @@ nav#primary
     border-bottom: 1px solid #e5e5e5;
     box-shadow: 0 -5px 0 rgba(0, 0, 0, 0.03);
     float: left;
+    min-height: 4.25em;
     position: relative;
     z-index: 999;
     width: 100%;
+}
 
-    ul {
+.primary-nav-ul {
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.05);
+    display: none;
+    left: 1em;
+    position: absolute;
+    right: 1em;
+    top: 4.25rem;
+
+    @media only screen and (min-width: 750px) {
+        background: none;
+        border: 0;
+        box-shadow: none;
+        display: block;
         float: right;
+        left: 0;
+        position: relative;
+        right: 0;
+        top: 0;
+    }
 
-        li {
+    &.expanded {
+        display: block;
+    }
+
+    li {
+        float: left;
+        width: 50%;
+
+        @media only screen and (min-width: 750px) {
             padding: 25px 0;
-            float: left;
+            width: auto;
+        }
 
-            a {
-                color: #aaa;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: 1px;
-                text-transform: uppercase;
+        a {
+            color: #aaa;
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            padding: 1em 1.4em;
+            text-transform: uppercase;
+
+            @media only screen and (min-width: 750px) {
                 padding: 0 0 0 25px;
+                width: auto;
+
+                &:hover {
+                    background: inherit;
+                }
             }
 
-            &.current-item a,
-            a:hover {
-                color: #f4645f;
+            &:hover {
+                background: #fbfbfb;
             }
         }
+
+        &.current-item a,
+        a:hover {
+            color: #f4645f;
+        }
+    }
+}
+
+.show-primary-nav {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    display: block;
+    float: right;
+    font-weight: 600;
+    margin-right: 0;
+    margin-top: 1.25rem;
+    padding: 0.25rem 0.75rem;
+    text-transform: uppercase;
+
+    @media only screen and (min-width: 750px) {
+        display: none;
+    }
+
+    &:hover {
+        background: #fbfbfb;
     }
 }
 

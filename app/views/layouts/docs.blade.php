@@ -24,7 +24,7 @@
         <div id="logo-head">
             <a href="//laravel.com"><img src="../assets/img/logo-head.png" alt="Laravel"></a>
         </div>
-        <ul>
+        <ul class="primary-nav-ul">
             <li><a href="/">Welcome</a></li>
             <li><a href="https://forge.laravel.com">Hosting</a></li>
             <li class="current-item"><a href="docs" title="Documentation">Documentation</a></li>
@@ -33,6 +33,7 @@
             <li><a href="http://laravel.io/forum" title="Laravel Forums">Forums</a></li>
             <li><a href="http://twitter.com/laravelphp" title="Laravel on Twitter">Twitter</a></li>
         </ul>
+        <a href="#" class="show-primary-nav">Menu</a>
     </div>
 </nav>
 

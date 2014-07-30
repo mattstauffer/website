@@ -14,28 +14,22 @@ jQuery(document).ready(function($) {
             $fixed_header = $('nav#primary'),
             nav_padding_offset = 90;
 
-        if ($nav.hasClass('expanded')) {
-            $(document).off('.dismiss-docs-nav');
-            $nav.removeClass('expanded');
-            return;
-        }
-
         // Display the nav and fit the nav on the screen as-is
         // @todo: Update this on resize and dismiss it all if we get big enough to not need the small-screen version
         $nav
-            .addClass('expanded')
+            .toggleClass('expanded')
             .css('height', $(window).height() - $fixed_header.outerHeight() - nav_padding_offset);
 
         $(document).on('click.dismiss-docs-nav', function(e) {
-            // @todo: If not clicking within nav
-            if (e.target == $('.docs-show')[0]) {
+            if (e.target == $('.docs-show')[0] && $nav.hasClass('expanded')) {
                 // Ignore if it's the button
                 return;
             } else if ($(e.target).closest('nav#docs').length > 0) {
+                // Ignore if it's a click within the nav
                 return true;
             }
 
-            $nav.toggleClass('expanded');
+            $nav.removeClass('expanded');
             $(document).off('.dismiss-docs-nav');
         });
 
@@ -43,6 +37,30 @@ jQuery(document).ready(function($) {
         if ($nav.outerHeight() > $body.outerHeight()) {
             $nav.css('height', $body.outerHeight() - nav_padding_offset);
         }
+    });
+
+    // Responsive top nav
+    $('.show-primary-nav').on('click', function(e) {
+        e.preventDefault();
+
+        var $nav = $('.primary-nav-ul');
+
+        $nav.toggleClass('expanded');
+
+        $(document).on('click.dismiss-primary-nav', function(e) {
+            if (e.target == $('.show-primary-nav')[0] && $nav.hasClass('expanded')) {
+                // Ignore if it's the button
+                return;
+            } else if ($(e.target).closest('nav#docs').length > 0) {
+                // Ignore if it's a click within the nav
+                return true;
+            }
+
+            console.log('yut');
+
+            $nav.removeClass('expanded');
+            $(document).off('.dismiss-primary-nav');
+        });
     });
 
     // toplink
