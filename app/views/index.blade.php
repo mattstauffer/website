@@ -1,36 +1,31 @@
 @extends('layouts.master')
 
+@section('body_opening')
+<body id="index" class="page home">
+@show
+
 @section('content')
-<!-- header -->
 <header id="header" role="header">
     <div class="boxed">
-        <!-- tagline -->
         <div id="tagline" class="animated bounceInUp">
             <h1>The PHP Framework For Web Artisans.</h1>
-            <h2>PHP That Doesn't Hurt. Code Happy & Enjoy The Fresh Air.</h2>
+            <h2>PHP That Doesn't Hurt. Code Happy &amp; Enjoy The Fresh Air.</h2>
         </div>
-        <!-- /tagline -->
 
-        <!-- callto action -->
         <div id="callto" class="animated bounceInLeft">
             <a href="docs/quick" class="button large animated shake">Quickstart</a>
             <a href="http://laracon.eu" class="button large animated shake">Laracon EU</a>
             <a href="https://forge.laravel.com" class="button large animated shake">Laravel Forge</a>
         </div>
-        <!-- /callto action -->
 
-        <!-- ui -->
         <div class="animated fadeIn" id="header_image" style="background: url(assets/img/sublime.png) top center no-repeat;"></div>
-        <!-- /ui -->
     </div>
 </header>
-<!-- /header -->
 
-<!-- nav -->
 <nav id="primary">
     <div class="boxed">
         <div id="logo-head">
-           <a href="//laravel.com"><img src="assets/img/logo-head.png" alt="Laravel" /></a>
+           <a href="//laravel.com"><img src="assets/img/logo-head.png" alt="Laravel"></a>
         </div>
         <ul>
             <li class="current-item"><a href="#">Welcome</a></li>
@@ -43,12 +38,9 @@
         </ul>
     </div>
 </nav>
-<!-- /nav -->
 
-<!-- content -->
 <div id="content">
 
-    <!-- page -->
     <section id="page">
         <article class="boxed">
             <ul class="feature-box nolist">
@@ -87,12 +79,9 @@
             </ul>
         </article>
     </section>
-    <!-- /page -->
 
 </div>
-<!-- /content -->
 
-<!-- quotes -->
 <section id="quotes">
    <article class="boxed">
        <ul id="quote" class="nolist textcenter aligncenter">
@@ -115,16 +104,13 @@
        </ul>
    </article>
 </section>
-<!-- /quotes -->
 
-<!-- footer -->
 <footer id="foot" class="textcenter">
     <div class="boxed">
 
-        <!-- nav -->
         <nav id="secondary">
             <div id="logo-foot">
-	           <a href="//laravel.com"><img src="assets/img/logo-foot.png" alt="Laravel" /></a>
+	           <a href="//laravel.com"><img src="assets/img/logo-foot.png" alt="Laravel"></a>
 	        </div>
             <ul>
                 <li class="current-item"><a href="#">Welcome</a></li>
@@ -136,17 +122,13 @@
                 <li><a href="//twitter.com/laravelphp" title="Laravel on Twitter">Twitter</a></li>
             </ul>
         </nav>
-        <!-- /nav -->
 
     </div>
 </footer>
-<!-- /footer -->
 
-<!-- to the top -->
 <div id="top">
     <a href="#index" title="Back to the top">
         <i class="icon-chevron-up"></i>
     </a>
 </div>
-<!-- /to the top -->
 @endsection
