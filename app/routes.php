@@ -146,5 +146,5 @@ Route::get('docs/{page?}', function($page = null)
         ],
     ];
 
-	return View::make('layouts.docs', compact('index', 'contents', 'docs_versions', 'current_docs_version'));
+	return View::make('layouts.docs', compact('index', 'contents', 'docs_versions'));
 });
