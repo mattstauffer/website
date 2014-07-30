@@ -197,18 +197,29 @@ body.home #tagline
 #version
 {
     float: right;
-    margin-top: -33px;
+    font-size: 0.7em;
     position: relative;
     z-index: 999;
 
+    @media only screen and (min-width: 500px) {
+        font-size: 1em;
+        margin-top: -33px;
+    }
+
     ul li {
         display: inline;
+        font-size: inherit;
+        margin-left: 0.25em;
+
+        @media only screen and (min-width: 500px) {
+            margin-left: 0;
+        }
 
         a {
             background: #ad4844;
             border-radius: 2px;
             color: #fff;
-            font-size: 18px;
+            font-size: 1.125em;
             font-weight: 600;
             opacity: 0.6;
             padding: 3px 8px;
