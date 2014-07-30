@@ -5,6 +5,64 @@ jQuery(document).ready(function($) {
         $(this).select();
     });
 
+    // Responsive docs nav
+    $('.docs-show').on('click', function(e) {
+        e.preventDefault();
+
+        var $nav = $('nav#docs'),
+            $body = $('#docs-content'),
+            $fixed_header = $('nav#primary'),
+            nav_padding_offset = 90;
+
+        // Display the nav and fit the nav on the screen as-is
+        // @todo: Update this on resize and dismiss it all if we get big enough to not need the small-screen version
+        $nav
+            .toggleClass('expanded')
+            .css('height', $(window).height() - $fixed_header.outerHeight() - nav_padding_offset);
+
+        $(document).on('click.dismiss-docs-nav', function(e) {
+            if (e.target == $('.docs-show')[0] && $nav.hasClass('expanded')) {
+                // Ignore if it's the button
+                return;
+            } else if ($(e.target).closest('nav#docs').length > 0) {
+                // Ignore if it's a click within the nav
+                return true;
+            }
+
+            $nav.removeClass('expanded');
+            $(document).off('.dismiss-docs-nav');
+        });
+
+        // Trim to body if bigger than
+        if ($nav.outerHeight() > $body.outerHeight()) {
+            $nav.css('height', $body.outerHeight() - nav_padding_offset);
+        }
+    });
+
+    // Responsive top nav
+    $('.show-primary-nav').on('click', function(e) {
+        e.preventDefault();
+
+        var $nav = $('.primary-nav-ul');
+
+        $nav.toggleClass('expanded');
+
+        $(document).on('click.dismiss-primary-nav', function(e) {
+            if (e.target == $('.show-primary-nav')[0] && $nav.hasClass('expanded')) {
+                // Ignore if it's the button
+                return;
+            } else if ($(e.target).closest('nav#docs').length > 0) {
+                // Ignore if it's a click within the nav
+                return true;
+            }
+
+            console.log('yut');
+
+            $nav.removeClass('expanded');
+            $(document).off('.dismiss-primary-nav');
+        });
+    });
+
     // toplink
     $('#top').hide();
     $(window).scroll(function(){
@@ -77,9 +135,9 @@ jQuery(document).ready(function($) {
     // parallax header
     $(window).scroll( function()
     {
-		var scroll = $(window).scrollTop(), slowScroll = scroll/2;
-		$('#header').css({ transform: "translateY(" + slowScroll + "px)" });
-	});
+        var scroll = $(window).scrollTop(), slowScroll = scroll/2;
+        $('#header').css({ transform: "translateY(" + slowScroll + "px)" });
+    });
 
     // footer z-index fix for ie
     $(window).scroll(function(){
@@ -150,7 +208,7 @@ jQuery(document).ready(function($) {
     // prettyprint
     $('pre').addClass('prettyprint');
 
-	// uniform
-	$('select, input:checkbox, input:radio, input:file').uniform();
+    // uniform
+    $('select, input:checkbox, input:radio, input:file').uniform();
 
 });

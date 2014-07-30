@@ -10,6 +10,7 @@
     <meta name="author" content="Taylor Otwell">
     <meta name="description" content="Laravel - The PHP framework for web artisans.">
     <meta name="keywords" content="laravel, php, framework, web, artisans, taylor otwell">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="shortcut icon" href="/favicon.png?v=2">
 
@@ -27,6 +28,7 @@
     <!-- If less than IE8 add some JS for the webfont icons -->
     <!--[if lt IE 8]><script src="assets/js/ie_font.js"></script><![endif]-->
 
+    @if (App::environment() == 'production')
     <script>
         var _gaq=[['_setAccount','UA-23865777-1'],['_trackPageview']];
         (function(d,t){
@@ -35,6 +37,7 @@
             s.parentNode.insertBefore(g,s)
         }(document,'script'));
     </script>
+    @endif
 </head>
 
 @section('body_opening')
