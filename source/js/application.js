@@ -9,7 +9,40 @@ jQuery(document).ready(function($) {
     $('.docs-show').on('click', function(e) {
         e.preventDefault();
 
-        $('nav#docs').toggleClass('expanded');
+        var $nav = $('nav#docs'),
+            $body = $('#docs-content'),
+            $fixed_header = $('nav#primary'),
+            nav_padding_offset = 90;
+
+        if ($nav.hasClass('expanded')) {
+            $(document).off('.dismiss-docs-nav');
+            $nav.removeClass('expanded');
+            return;
+        }
+
+        // Display the nav and fit the nav on the screen as-is
+        // @todo: Update this on resize and dismiss it all if we get big enough to not need the small-screen version
+        $nav
+            .addClass('expanded')
+            .css('height', $(window).height() - $fixed_header.outerHeight() - nav_padding_offset);
+
+        $(document).on('click.dismiss-docs-nav', function(e) {
+            // @todo: If not clicking within nav
+            if (e.target == $('.docs-show')[0]) {
+                // Ignore if it's the button
+                return;
+            } else if ($(e.target).closest('nav#docs').length > 0) {
+                return true;
+            }
+
+            $nav.toggleClass('expanded');
+            $(document).off('.dismiss-docs-nav');
+        });
+
+        // Trim to body if bigger than
+        if ($nav.outerHeight() > $body.outerHeight()) {
+            $nav.css('height', $body.outerHeight() - nav_padding_offset);
+        }
     });
 
     // toplink

@@ -28,6 +28,7 @@
     <!-- If less than IE8 add some JS for the webfont icons -->
     <!--[if lt IE 8]><script src="assets/js/ie_font.js"></script><![endif]-->
 
+    @if (App::environment() == 'production')
     <script>
         var _gaq=[['_setAccount','UA-23865777-1'],['_trackPageview']];
         (function(d,t){
@@ -36,6 +37,7 @@
             s.parentNode.insertBefore(g,s)
         }(document,'script'));
     </script>
+    @endif
 </head>
 
 @section('body_opening')

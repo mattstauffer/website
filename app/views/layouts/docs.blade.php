@@ -41,7 +41,7 @@
     <section id="documentation">
         <article class="boxed">
 
-            <a href="#" class="docs-show">Show docs</a>
+            <a href="#" class="docs-show">Docs Navigation</a>
 
             <nav id="docs">
                 {{ $index }}
