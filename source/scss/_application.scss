@@ -389,146 +389,170 @@ Pages
 }
 
 /* documentation */
-#documentation nav#docs
-{
-    width: 200px;
-    height: 100%;
-    padding: 45px 0;
-    display: block;
-    float: left;
-    position: relative;
+#documentation {
+    .docs-show {
+        display: block;
 
-    ul li {
-        border-bottom: 1px solid #e9e9e9;
-        color: #f4645f;
-        font-weight: 600;
-        font-size: 16px;
-        margin-bottom: 5px;
-        padding: 5px 0;
-        transition: 250ms linear all;
+        @media only screen and (min-width: 1024px) {
+            display: none;
+        }
+    }
 
-        &:hover {
-            cursor: pointer;
-            color: #444;
+    nav#docs {
+        background: #f5f5f5;
+        height: 100%;
+        padding: 45px 0;
+        position: absolute;
+        visibility: hidden;
+        width: 200px;
+        z-index: 10;
+
+        @media only screen and (min-width: 1024px) {
+            float: left;
+            position: relative;
+            visibility: visible;
         }
 
-        ul {
-            margin-bottom: 25px;
+        &.expanded {
+            visibility: visible;
+        }
 
-            li {
-                border-bottom: none;
-                margin-bottom: 0;
-                padding: 0;
+        ul li {
+            border-bottom: 1px solid #e9e9e9;
+            color: #f4645f;
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 5px;
+            padding: 5px 0;
+            transition: 250ms linear all;
 
-                &:before {
-                    content: "↳ ";
-                    color: #ccc;
-                }
+            &:hover {
+                cursor: pointer;
+                color: #444;
+            }
 
-                &.current-item {
+            ul {
+                margin-bottom: 25px;
+
+                li {
+                    border-bottom: none;
+                    margin-bottom: 0;
+                    padding: 0;
+
                     &:before {
-                        color: #cccccc;
-                        content: " ";
-                        padding-left: 20px;
+                        content: "↳ ";
+                        color: #ccc;
+                    }
+
+                    &.current-item {
+                        &:before {
+                            color: #cccccc;
+                            content: " ";
+                            padding-left: 20px;
+                        }
+
+                        a {
+                            color: #888;
+
+                            &:hover {
+                                color: #444;
+                            }
+                        }
                     }
 
                     a {
-                        color: #888;
-
-                        &:hover {
-                            color: #444;
-                        }
+                        font-weight: 600;
+                        font-size: 14px;
                     }
+                }
+            }
+        }
+    }
+
+    #docs-content {
+        background: #fffefe;
+        padding: 25px;
+
+        @media only screen and (min-width: 1024px) {
+            display: block;
+            float: right;
+            padding-left: 50px;
+            padding-right: 50px;
+            width: 724px;
+        }
+
+        h1 {
+            font-size: 32px;
+        }
+
+        h2 {
+            border-top: 1px solid #eee;
+            font-size: 32px;
+            margin-top: 20px;
+            padding-top: 35px;
+
+            a {
+                color: #666;
+                width: 100%;
+
+                &:before {
+                    color: #f4645f;
+                    content: "# ";
+                    opacity: 0.4;
+
+                    &:hover {
+                        opacity: 0.8;
+                    }
+                }
+            }
+        }
+
+        h3 {
+            color: #666;
+            font-size: 24px;
+            margin-top: 10px;
+            padding-top: 15px;
+        }
+
+        h4 {
+            color: #666;
+            font-size: 110%;
+            margin-top: 25px;
+        }
+
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 15px 0 20px 0;
+
+            li {
+                &:before {
+                    color: #f4645f;
+                    content: "# ";
+                    padding-right: 5px;
+                    opacity: 0.4;
                 }
 
                 a {
                     font-weight: 600;
-                    font-size: 14px;
+
+                    &:hover {
+                        color: #444;
+                    }
                 }
             }
         }
-    }
-}
 
-#documentation #docs-content
-{
-    background: #fffefe;
-    width: 724px;
-    padding: 25px 50px;
-    display: block;
-    float: right;
+        blockquote {
+            background: #f4726d;
+            border-radius: 2px;
+            margin-bottom: 20px;
+            padding: 18px 20px;
+            width: 684px;
 
-    h1 {
-        font-size: 32px;
-    }
-
-    h2 {
-        border-top: 1px solid #eee;
-        font-size: 32px;
-        margin-top: 20px;
-        padding-top: 35px;
-
-        a {
-            color: #666;
-            width: 100%;
-
-            &:before {
-                color: #f4645f;
-                content: "# ";
-                opacity: 0.4;
-
-                &:hover {
-                    opacity: 0.8;
-                }
+            p, a {
+                color: #fff;
             }
-        }
-    }
-
-    h3 {
-        color: #666;
-        font-size: 24px;
-        margin-top: 10px;
-        padding-top: 15px;
-    }
-
-    h4 {
-        color: #666;
-        font-size: 110%;
-        margin-top: 25px;
-    }
-
-    ul {
-        list-style: none;
-        margin: 0;
-        padding: 15px 0 20px 0;
-
-        li {
-            &:before {
-                color: #f4645f;
-                content: "# ";
-                padding-right: 5px;
-                opacity: 0.4;
-            }
-
-            a {
-                font-weight: 600;
-
-                &:hover {
-                    color: #444;
-                }
-            }
-        }
-    }
-
-    blockquote {
-        background: #f4726d;
-        border-radius: 2px;
-        margin-bottom: 20px;
-        padding: 18px 20px;
-        width: 684px;
-
-        p, a {
-            color: #fff;
         }
     }
 }

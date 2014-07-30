@@ -9,27 +9,11 @@
 
         <div id="version">
             <ul class="nolist">
-                @if (DOCS_VERSION == 'master')
-                    <li class="current"><a href="{{ url('docs/dev') }}" title="Dev">Dev</a></li>
-                    <li><a href="{{ url('docs/4-2') }}" title="4.2">4.2</a></li>
-                    <li><a href="{{ url('docs/4-1') }}" title="4.1">4.1</a></li>
-                    <li><a href="{{ url('docs/4-0') }}" title="4.0">4.0</a></li>
-                @elseif (DOCS_VERSION == '4.2')
-                    <li><a href="{{ url('docs/dev') }}" title="Dev">Dev</a></li>
-                    <li class="current"><a href="{{ url('docs/4-2') }}" title="4.2">4.2</a></li>
-                    <li><a href="{{ url('docs/4-1') }}" title="4.1">4.1</a></li>
-                    <li><a href="{{ url('docs/4-0') }}" title="4.0">4.0</a></li>
-                @elseif (DOCS_VERSION == '4.1')
-                    <li><a href="{{ url('docs/dev') }}" title="Dev">Dev</a></li>
-                    <li><a href="{{ url('docs/4-2') }}" title="4.2">4.2</a></li>
-                    <li class="current"><a href="{{ url('docs/4-1') }}" title="4.1">4.1</a></li>
-                    <li><a href="{{ url('docs/4-0') }}" title="4.0">4.0</a></li>
-                @else
-                    <li><a href="{{ url('docs/dev') }}" title="Dev">Dev</a></li>
-                    <li><a href="{{ url('docs/4-2') }}" title="4.2">4.2</a></li>
-                    <li><a href="{{ url('docs/4-1') }}" title="4.1">4.1</a></li>
-                    <li class="current"><a href="{{ url('docs/4-0') }}" title="4.0">4.0</a></li>
-                @endif
+                @foreach ($docs_versions as $doc_key => $doc_version)
+                    <li class="{{{ DOCS_VERSION == $doc_key ? 'current' : '' }}}">
+                        <a href="{{ url('docs/' . $doc_version['url_key']) }}" title="{{ $doc_version['title'] }}">{{ $doc_version['title'] }}</a>
+                    </li>
+                @endforeach
             </ul>
         </div>
     </div>
@@ -56,6 +40,8 @@
 
     <section id="documentation">
         <article class="boxed">
+
+            <a href="#" class="docs-show">Show docs</a>
 
             <nav id="docs">
                 {{ $index }}

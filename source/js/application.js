@@ -5,6 +5,13 @@ jQuery(document).ready(function($) {
         $(this).select();
     });
 
+    // Responsive docs nav
+    $('.docs-show').on('click', function(e) {
+        e.preventDefault();
+
+        $('nav#docs').toggleClass('expanded');
+    });
+
     // toplink
     $('#top').hide();
     $(window).scroll(function(){
@@ -77,9 +84,9 @@ jQuery(document).ready(function($) {
     // parallax header
     $(window).scroll( function()
     {
-		var scroll = $(window).scrollTop(), slowScroll = scroll/2;
-		$('#header').css({ transform: "translateY(" + slowScroll + "px)" });
-	});
+        var scroll = $(window).scrollTop(), slowScroll = scroll/2;
+        $('#header').css({ transform: "translateY(" + slowScroll + "px)" });
+    });
 
     // footer z-index fix for ie
     $(window).scroll(function(){
@@ -150,7 +157,7 @@ jQuery(document).ready(function($) {
     // prettyprint
     $('pre').addClass('prettyprint');
 
-	// uniform
-	$('select, input:checkbox, input:radio, input:file').uniform();
+    // uniform
+    $('select, input:checkbox, input:radio, input:file').uniform();
 
 });

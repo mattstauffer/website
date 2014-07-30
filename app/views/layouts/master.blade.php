@@ -10,6 +10,7 @@
     <meta name="author" content="Taylor Otwell">
     <meta name="description" content="Laravel - The PHP framework for web artisans.">
     <meta name="keywords" content="laravel, php, framework, web, artisans, taylor otwell">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="shortcut icon" href="/favicon.png?v=2">
 
