@@ -46,7 +46,7 @@ gulp.task('scripts', ['copy-scripts'], function() {
 		'source/js/application.js'
 		])
 		.pipe(concat('bundle.js'))
-//	    .pipe(uglify())
+	    .pipe(uglify())
 		.pipe(gulp.dest('public/assets/js'))
 		.pipe(livereload(server))
 		.pipe(notify({ message: 'Scripts task complete' }));
@@ -60,7 +60,7 @@ gulp.task('default', function() {
 // Watch
 gulp.task('watch', function() {
 	// port 35729 is LiveReload
-	server.listen(35729, function (err) {
+	server().listen(35729, function (err) {
 		if (err) {
 			return console.error(err);
 		}
