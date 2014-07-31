@@ -1,4 +1,11 @@
 jQuery(document).ready(function($) {
+    // Cache window width on resize to reduce DOM lookups
+    var window_width = $(window).width();
+
+    $(window).resize(function() {
+        window_width = $(window).width();
+    });
+
 
     // select text inputs
     $('input[type=text], textarea').focus(function() {
@@ -65,8 +72,12 @@ jQuery(document).ready(function($) {
 
     // toplink
     $('#top').hide();
+
     $(window).scroll(function(){
-        if($(window).scrollTop() >= 600)
+        // Hide top link at the top of the page, or at the WAY bottom on mobile (obscures footer)
+        var mobileHideTopFooter = window_width < 800 && ($(window).scrollTop() + $(window).height()) >= ($(document).height() - 90);
+
+        if (($(window).scrollTop() >= 600) && ! mobileHideTopFooter)
         {
             $('#top').fadeIn(500);
         }
