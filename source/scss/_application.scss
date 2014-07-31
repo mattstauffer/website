@@ -85,10 +85,23 @@ textarea
 
 #wrapper
 {
-    padding-bottom: 60px;
+    padding-bottom: 90px;
     position: absolute;
     width: 100%;
+
+    @media only screen and (min-width: 850px) {
+        padding-bottom: 60px;
+    }
 }
+
+.br-mobile--footer {
+    display: block;
+
+    @media only screen and (min-width: 850px) {
+        display: none;
+    }
+}
+
 /*
 ----------------------------------------------------------
 ----------------------------------------------------------
@@ -783,9 +796,12 @@ Logo Foot
 */
 #logo-foot
 {
-    float: left;
-    padding-top: 15px;
     transition: 250ms linear all;
+
+    @media only screen and (min-width: 500px) {
+        float: left;
+        padding-top: 15px;
+    }
 
     &:hover {
         margin-top: -2px;
@@ -803,14 +819,39 @@ Nav Secondary
 nav#secondary
 {
     width: 100%;
-    float: left;
+
+    @media only screen and (min-width: 500px) {
+        float: left;
+    }
 
     ul {
-        float: right;
+        clear: left;
+        margin-top: 0.6em;
+
+        @media only screen and (min-width: 500px) {
+            clear: none;
+            float: right;
+        }
+
+        @media only screen and (min-width: 750px) {
+            margin-top: 0;
+        }
 
         li {
             float: left;
-            padding: 15px 0 20px 0;
+            padding: 4px;
+
+            &:nth-of-type(4) {
+                clear: left;
+            }
+
+            @media only screen and (min-width: 750px) {
+                padding: 15px 0 20px 0;
+
+                &:nth-of-type(4) {
+                    clear: none;
+                }
+            }
 
             a {
                 color: #aaa;

@@ -69,5 +69,4 @@ gulp.task('watch', function() {
 		gulp.watch('source/scss/**/*.scss', ['styles']);
 		gulp.watch('source/js/**/*.js', ['scripts']);
 	});
-    console.log(server);
 });
