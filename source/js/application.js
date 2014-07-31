@@ -132,11 +132,23 @@ jQuery(document).ready(function($) {
         $( "nav#primary" ).css({ width: '100%' });
     });
 
+    var header_height = $('#header').outerHeight() + 50; // Add 50 for good measure
+
     // parallax header
     $(window).scroll( function()
     {
-        var scroll = $(window).scrollTop(), slowScroll = scroll/2;
-        $('#header').css({ transform: "translateY(" + slowScroll + "px)" });
+        var scroll = $(window).scrollTop(),
+            slowScroll = scroll/2;
+
+        // Drop parallax on smaller screens (faux mobile detection)
+        if (screen.width < 1025) {
+            return;
+        }
+
+        // Only run parallax when we're high enough on the page to see it
+        if (scroll < header_height) {
+            $('#header').css({transform: "translateY(" + slowScroll + "px)"});
+        }
     });
 
     // footer z-index fix for ie
