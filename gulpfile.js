@@ -8,7 +8,8 @@ var gulp = require('gulp'),
 	plumber = require('gulp-plumber'),
 	concat = require('gulp-concat'),
 	livereload = require('gulp-livereload'),
-	server = require('tiny-lr');
+	lr = require('tiny-lr'),
+    server = lr();
 
 function onError()
 {
@@ -60,7 +61,7 @@ gulp.task('default', function() {
 // Watch
 gulp.task('watch', function() {
 	// port 35729 is LiveReload
-	server().listen(35729, function (err) {
+	server.listen(35729, function (err) {
 		if (err) {
 			return console.error(err);
 		}
@@ -68,4 +69,5 @@ gulp.task('watch', function() {
 		gulp.watch('source/scss/**/*.scss', ['styles']);
 		gulp.watch('source/js/**/*.js', ['scripts']);
 	});
+    console.log(server);
 });
