@@ -3,9 +3,9 @@
   "verison": "1.0.0",
   "devDependencies": {
     "gulp": "~3.8.0",
-    "gulp-livereload": "~2.0.0",
+    "gulp-livereload": "0.3.2",
     "gulp-rename": "~1.2.0",
-    "tiny-lr": "~0.0.5",
+    "tiny-lr": "0.0.5",
     "gulp-sass": "~0.7.2",
     "gulp-minify-css": "~0.3.7",
     "gulp-notify": "~1.4.0",
