@@ -157,8 +157,13 @@ body.dashboard #header
         font-weight: 400!important;
         font-size: 32px;
         margin-bottom: 5px;
+        margin-top: 0.25em;
         text-transform: uppercase;
         text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+
+        @media only screen and (min-width: 500px) {
+            margin-top: 0.5em;
+        }
     }
 }
 
@@ -397,9 +402,13 @@ nav#primary
 }
 
 .show-primary-nav {
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: #fafafa;
+    border: 1px solid #fcfcfc;
+    border-bottom-color: #eee;
+    border-right-color: #eee;
     display: block;
     float: right;
+    font-size: 0.9em;
     font-weight: 600;
     margin-right: 0;
     margin-top: 1.25rem;
