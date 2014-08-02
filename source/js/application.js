@@ -25,7 +25,6 @@ jQuery(document).ready(function($) {
         // @todo: Update this on resize and dismiss it all if we get big enough to not need the small-screen version
         $nav
             .toggleClass('expanded')
-            .toggleClass('slideInLeft')
             .css('height', $(window).height() - $fixed_header.outerHeight() - nav_padding_offset);
 
         $(document).on('click.dismiss-docs-nav', function(e) {
