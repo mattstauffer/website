@@ -459,6 +459,7 @@ nav#primary
         }
 
         &.current-item a,
+        #secondary &.current-item a,
         a:hover {
             color: #f4645f;
         }
@@ -995,10 +996,10 @@ nav#secondary
                 text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
                 text-transform: uppercase;
             }
-        }
 
-        &.current-item a, a:hover {
-            color: #f4645f;
+            &.current-item a, a:hover {
+                color: #f4645f;
+            }
         }
     }
 }
