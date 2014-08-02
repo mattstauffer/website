@@ -42,7 +42,14 @@
     <section id="documentation">
         <article class="boxed">
 
-            <a href="#" class="docs-show">Docs Navigation</a>
+            <ul class="version-picker--mobile nolist">
+                @foreach ($docs_versions as $doc_key => $doc_version)
+                <li class="{{{ DOCS_VERSION == $doc_key ? 'current' : '' }}}">
+                    <a href="{{ url('docs/' . $doc_version['url_key']) }}" title="{{ $doc_version['title'] }}">{{ $doc_version['title'] }}</a>
+                </li>
+                @endforeach
+            </ul>
+            <a href="#" class="docs-show">Navigate</a>
 
             <nav id="docs" class="animated">
                 {{ $index }}

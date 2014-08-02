@@ -85,9 +85,13 @@ textarea
 
 #wrapper
 {
-    padding-bottom: 90px;
+    padding-bottom: 115px;
     position: absolute;
     width: 100%;
+
+    @media only screen and (min-width: 500px) {
+        padding-bottom: 100px;
+    }
 
     @media only screen and (min-width: 850px) {
         padding-bottom: 60px;
@@ -120,17 +124,18 @@ Header
     text-align: left;
     width: 100%;
     z-index: 20;
+
 }
 
 body.home #header
 {
     background: #f4726d url("../img/header.jpg") no-repeat;
-    height: 540px;
+    height: 525px;
     overflow: hidden;
     position: relative;
     text-align: center;
     width: 100%;
-    z-index: 20;
+    z-index: 23;
 
     @media only screen and (min-width: 500px) {
         height: 675px;
@@ -146,6 +151,10 @@ body.home #header
     width: 100%;
 
     @media only screen and (min-width: 500px) {
+        background-size: 150%;
+    }
+
+    @media only screen and (min-width: 750px) {
         background-size: auto;
         border-radius: 0.5em 0.5em 0 0;
         height: 355px;
@@ -171,18 +180,14 @@ body.dashboard #header
         font-weight: 400!important;
         font-size: 32px;
         margin-bottom: 5px;
-        margin-top: 0.25em;
+        margin-top: 0.5em;
         text-transform: uppercase;
         text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-
-        @media only screen and (min-width: 500px) {
-            margin-top: 0.5em;
-        }
     }
 
     body.home & {
         margin: 0 auto;
-        padding-top: 40px;
+        padding-top: 60px;
         position: relative;
         width: 100%;
         z-index: 25;
@@ -197,7 +202,7 @@ body.dashboard #header
 
         h1 {
             color: #fff;
-            font-size: 28px;
+            font-size: 26px;
             font-weight: 200!important;
             margin-bottom: 5px;
             text-transform: uppercase;
@@ -205,7 +210,7 @@ body.dashboard #header
         }
 
         h2 {
-            font-size: 16px;
+            font-size: 14px;
         }
 
         @media only screen and (min-width: 500px) {
@@ -242,7 +247,7 @@ body.dashboard #header
 #callto
 {
     margin: 0 auto;
-    padding: 15px 0 0 0;
+    padding: 15px 0 10px 0;
     position: relative;
     width: 100%;
     z-index: 25;
@@ -252,57 +257,88 @@ body.dashboard #header
         animation-duration: 1s;
         clear: left;
         display: block;
-        font-size: 1em;
+        font-size: 0.8em;
         margin-bottom: 0.75em;
         margin-left: auto;
         margin-right: auto;
-        width: 40%;
+        padding: 1em 1.35em;
+        width: 50%;
 
         @media only screen and (min-width: 600px) {
             clear: none;
             display: inline-block;
+            font-size: 1em;
+            padding: 15px 25px;
             margin-bottom: 1.25em;
             width: auto;
         }
     }
 
     @media only screen and (min-width: 600px) {
+        padding-bottom: 0;
         padding-top: 25px;
+    }
+}
 
-        .button {
-            font-size: 1.25em;
-            margin-bottom: 1.5em;
+#version, .version-picker--mobile {
+    float: right;
+    font-size: 0.7rem;
+    position: relative;
+
+    li {
+        display: inline;
+        font-size: inherit;
+        margin-left: 0.25em;
+
+        a {
+            border-radius: 2px;
+            font-weight: 600;
         }
+    }
+}
+
+.version-picker--mobile {
+    margin-top: 0.125em;
+
+    li {
+        font-size: 1.25em;
+
+        a {
+            background: #fff;
+            opacity: 0.6;
+            padding: 3px 8px;
+        }
+
+        &.current a {
+            opacity: 1;
+        }
+    }
+
+    @media only screen and (min-width: 500px) {
+        display: none;
     }
 }
 
 #version
 {
-    float: right;
-    font-size: 0.7em;
-    position: relative;
+    display: none;
     z-index: 999;
 
     @media only screen and (min-width: 500px) {
+        display: block;
         font-size: 1em;
         margin-top: -33px;
     }
 
-    ul li {
-        display: inline;
-        font-size: inherit;
-        margin-left: 0.25em;
-
+    li {
         @media only screen and (min-width: 500px) {
             margin-left: 0;
         }
 
         a {
             background: #ad4844;
-            border-radius: 2px;
             color: #fff;
             font-size: 1.125em;
-            font-weight: 600;
             opacity: 0.6;
             padding: 3px 8px;
 
@@ -398,6 +434,17 @@ nav#primary
     position: relative;
     z-index: 999;
     width: 100%;
+
+    &.fixed {
+        opacity: 0.9;
+        position: fixed;
+        top: 0;
+        width: 100%;
+    }
+
+    &.expanded {
+        opacity: 1;
+    }
 }
 
 .primary-nav-ul {
@@ -405,9 +452,8 @@ nav#primary
     border: 1px solid rgba(0, 0, 0, 0.1);
     box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.05);
     display: none;
-    left: 1em;
+    left: 0;
     position: absolute;
-    right: 1em;
     top: 4.25rem;
 
     @media only screen and (min-width: 750px) {
@@ -416,19 +462,17 @@ nav#primary
         box-shadow: none;
         display: block;
         float: right;
-        left: 0;
         position: relative;
-        right: 0;
         top: 0;
     }
 
-    &.expanded {
+    .expanded & {
         display: block;
     }
 
     li {
         float: left;
-        width: 50%;
+        width: 100%;
 
         @media only screen and (min-width: 750px) {
             padding: 25px 0;
@@ -436,15 +480,18 @@ nav#primary
         }
 
         a {
+            border-bottom: 1px solid #eee;
             color: #aaa;
             display: block;
-            font-size: 12px;
+            font-size: 14px;
             font-weight: 600;
             letter-spacing: 1px;
-            padding: 1em 1.4em;
+            padding: 0.8em 1.4em;
             text-transform: uppercase;
 
             @media only screen and (min-width: 750px) {
+                border-bottom: 0;
+                font-size: 12px;
                 padding: 0 0 0 25px;
                 width: auto;
 
@@ -453,12 +500,18 @@ nav#primary
                 }
             }
 
+            // Adjust for short (horizontal, likely) devices
+            @media only screen and (max-height: 400px) and (max-width: 749px) {
+                padding: 0.45em 1.4em;
+            }
+
             &:hover {
                 background: #fbfbfb;
             }
         }
 
         &.current-item a,
+        #secondary &.current-item a,
         a:hover {
             color: #f4645f;
         }
@@ -532,7 +585,7 @@ Pages
     float: left;
     width: 100%;
 
-    @media only screen and (min-width: 500px) {
+    @media only screen and (min-width: 750px) {
         padding-bottom: 25px;
         padding-top: 50px;
     }
@@ -568,13 +621,14 @@ Pages
 #documentation {
     .docs-show {
         background: #fff;
-        color: #777;
+//        color: #777;
         display: block;
         font-size: 0.9rem;
-        padding: 0.5em 1em;
-        width: 7rem;
+        margin-bottom: 0.15em;
+        margin-top: 0.25em;
+        padding: 0.3em 0.6em;
+        width: 5rem;
         text-transform: uppercase;
-        margin-left: 1rem;
 
         @media only screen and (min-width: 1024px) {
             display: none;
@@ -680,13 +734,25 @@ Pages
 
         h1 {
             font-size: 32px;
+            margin-bottom: 0.4em;
+            margin-top: 0;
+
+            & + ul {
+                padding-top: 0;
+            }
+
+            @media only screen and (min-width: 500px) {
+                margin-bottom: 0.8em;
+                margin-top: 0.5em;
+            }
         }
 
         h2 {
             border-top: 1px solid #eee;
-            font-size: 32px;
-            margin-top: 20px;
-            padding-top: 35px;
+            font-size: 1.65rem;
+            margin-bottom: 0.4em;
+            margin-top: 0.25em;
+            padding-top: 0.75em;
 
             a {
                 color: #666;
@@ -702,13 +768,26 @@ Pages
                     }
                 }
             }
+
+            @media only screen and (min-width: 500px) {
+                font-size: 2rem;
+                margin-bottom: 0.8em;
+                margin-top: 0.625em;
+                padding-top: 1.1em;
+            }
         }
 
         h3 {
             color: #666;
-            font-size: 24px;
+            font-size: 1.15em;
+            margin-bottom: 0.4em;
             margin-top: 10px;
             padding-top: 15px;
+
+            @media only screen and (min-width: 500px) {
+                font-size: 1.5em;
+                margin-bottom: 0.8em;
+            }
         }
 
         h4 {
@@ -743,12 +822,24 @@ Pages
         blockquote {
             background: #f4726d;
             border-radius: 2px;
+            box-sizing: border-box;
             margin-bottom: 20px;
+            max-width: 100%;
             padding: 18px 20px;
-            width: 684px;
+            width: 724px;
 
             p, a {
                 color: #fff;
+            }
+        }
+
+        pre {
+            margin-left: -4em;
+            margin-right: -4em;
+
+            @media only screen and (min-width: 500px) {
+                margin-left: inherit;
+                margin-right: inherit;
             }
         }
     }
@@ -833,19 +924,21 @@ Quotes
     overflow: hidden;
 
     ul li {
-        font-size: 18px;
+        font-size: 1rem;
+
         margin: 0 auto;
-        margin-top: 25px;
+        margin-top: 1.5625rem;
         text-align: center;
 
         @media only screen and (min-width: 500px) {
-            margin-top: 60px;
+            font-size: 1.125rem;
+            margin-top: 3.75rem;
         }
 
         p {
             color: #fff;
-            font-size: 22px;
-            margin-bottom: 8px;
+            font-size: 1.2222em;
+            margin-bottom: 0.4444em;
             text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
         }
 
@@ -920,10 +1013,14 @@ nav#secondary
 
     ul {
         clear: left;
+        margin-left: -0.25em;
+        margin-right: -0.25em;
         margin-top: 0.6em;
 
         @media only screen and (min-width: 500px) {
             clear: none;
+            margin-left: inherit;
+            margin-right: inherit;
             float: right;
         }
 
@@ -939,27 +1036,32 @@ nav#secondary
                 clear: left;
             }
 
+            a {
+                color: #aaa;
+                display: block;
+                font-size: 11px;
+                font-weight: 600;
+                letter-spacing: 1px;
+                padding: 2px 5px;
+                text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+                text-transform: uppercase;
+            }
+
+            &.current-item a, a:hover {
+                color: #f4645f;
+            }
+
             @media only screen and (min-width: 750px) {
                 padding: 15px 0 20px 0;
 
                 &:nth-of-type(4) {
                     clear: none;
                 }
-            }
 
-            a {
-                color: #aaa;
-                font-size: 11px;
-                font-weight: 600;
-                letter-spacing: 1px;
-                padding: 0 15px 0 0;
-                text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-                text-transform: uppercase;
+                a {
+                    padding: 0 15px 0 0;
+                }
             }
-        }
-
-        &.current-item a, a:hover {
-            color: #f4645f;
         }
     }
 }
@@ -982,7 +1084,7 @@ Copyright
     color: #555555;
     font-size: 11px;
     font-weight: 600;
-    letter-spacing: 1px;
+    line-height: 1.5;
     padding: 25px 0;
     position: fixed;
     text-transform: uppercase;
@@ -995,6 +1097,11 @@ Copyright
         &:hover {
             color: #999;
         }
+    }
+
+    @media only screen and (min-width: 500px) {
+        letter-spacing: 1px;
+        line-height: inherit;
     }
 }
 /*

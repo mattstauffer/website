@@ -6,7 +6,6 @@ jQuery(document).ready(function($) {
         window_width = $(window).width();
     });
 
-
     // select text inputs
     $('input[type=text], textarea').focus(function() {
         $(this).select();
@@ -25,7 +24,6 @@ jQuery(document).ready(function($) {
         // @todo: Update this on resize and dismiss it all if we get big enough to not need the small-screen version
         $nav
             .toggleClass('expanded')
-            .toggleClass('slideInLeft')
             .css('height', $(window).height() - $fixed_header.outerHeight() - nav_padding_offset);
 
         $(document).on('click.dismiss-docs-nav', function(e) {
@@ -51,12 +49,22 @@ jQuery(document).ready(function($) {
     $('.show-primary-nav').on('click', function(e) {
         e.preventDefault();
 
-        var $nav = $('.primary-nav-ul');
+        var $nav_wrapper = $('nav#primary');
 
-        $nav.toggleClass('expanded');
+        if ( ! $nav_wrapper.hasClass('expanded')) {
+            console.log('Comparing whether window ' + $(window).scrollTop() + ' is less than content top ' + $('#content').offset().top);
+            if ($(window).scrollTop() < ($('#content').offset().top - 250)) {
+                var yOffset = screen.height - $('.primary-nav-ul').outerHeight();
+                $('html, body').animate({
+                    scrollTop: $("#content").offset().top - yOffset
+                }, 1000);
+            }
+        }
+
+        $nav_wrapper.toggleClass('expanded');
 
         $(document).on('click.dismiss-primary-nav', function(e) {
-            if (e.target == $('.show-primary-nav')[0] && $nav.hasClass('expanded')) {
+            if (e.target == $('.show-primary-nav')[0] && $nav_wrapper.hasClass('expanded')) {
                 // Ignore if it's the button
                 return;
             } else if ($(e.target).closest('nav#docs').length > 0) {
@@ -64,9 +72,7 @@ jQuery(document).ready(function($) {
                 return true;
             }
 
-            console.log('yut');
-
-            $nav.removeClass('expanded');
+            $nav_wrapper.removeClass('expanded');
             $(document).off('.dismiss-primary-nav');
         });
     });
@@ -102,12 +108,7 @@ jQuery(document).ready(function($) {
         var shouldBeFixed = scrollTop > navHomeY;
         if ( shouldBeFixed && ! isFixed )
         {
-            nav.css({
-                position: 'fixed',
-                width: '100%',
-                top: 0,
-                opacity: 0.9
-            });
+            nav.addClass('fixed');
 
             content.css({
                 paddingTop: '75px'
@@ -121,11 +122,8 @@ jQuery(document).ready(function($) {
         }
         else if ( ! shouldBeFixed && isFixed )
         {
-            nav.css({
-                position: 'relative',
-                width: '100%',
-                opacity: 1
-            });
+            nav.removeClass('fixed');
+
 
             content.css({
                 paddingTop: '0'
@@ -140,9 +138,10 @@ jQuery(document).ready(function($) {
     });
 
     // make sure nav stays full width on resize
-    $( window ).resize(function() {
-        $( "nav#primary" ).css({ width: '100%' });
-    });
+    // This is completely unnecessary.
+//    $( window ).resize(function() {
+//        $( "nav#primary" ).css({ width: '100%' });
+//    });
 
     var header_height = $('#header').outerHeight() + 50; // Add 50 for good measure
 
