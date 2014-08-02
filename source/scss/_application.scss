@@ -115,9 +115,9 @@ Header
 {
     background: #f4726d;
     height: 100px;
-    text-align: left;
     overflow: hidden;
     position: relative;
+    text-align: left;
     width: 100%;
     z-index: 20;
 }
@@ -125,18 +125,32 @@ Header
 body.home #header
 {
     background: #f4726d url("../img/header.jpg") no-repeat;
-    height: 675px;
+    height: 540px;
     overflow: hidden;
     position: relative;
     text-align: center;
     width: 100%;
     z-index: 20;
+
+    @media only screen and (min-width: 500px) {
+        height: 675px;
+        padding-bottom: 0;
+    }
 }
 
-body.home #header_image
-{
+.sublime-header {
+    border-radius: 0.25em 0.25em 0 0;
+    background: url(../img/sublime-inner.png) top left no-repeat;
+    background-size: 175%;
+    padding-bottom: 60%;
     width: 100%;
-    height: 355px;
+
+    @media only screen and (min-width: 500px) {
+        background-size: auto;
+        border-radius: 0.5em 0.5em 0 0;
+        height: 355px;
+        margin-top: 15px;
+    }
 }
 
 body.dashboard #header
@@ -165,23 +179,50 @@ body.dashboard #header
             margin-top: 0.5em;
         }
     }
-}
 
-body.home #tagline
-{
-    margin: 0 auto;
-    padding-top: 100px;
-    position: relative;
-    width: 100%;
-    z-index: 25;
+    body.home & {
+        margin: 0 auto;
+        padding-top: 40px;
+        position: relative;
+        width: 100%;
+        z-index: 25;
 
-    h1 {
-        color: #fff;
-        font-size: 48px;
-        font-weight: 200!important;
-        margin-bottom: 5px;
-        text-transform: uppercase;
-        text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+        .br-mobile__tagline {
+            display: block;
+
+            @media only screen and (min-width: 900px) {
+                display: none;
+            }
+        }
+
+        h1 {
+            color: #fff;
+            font-size: 28px;
+            font-weight: 200!important;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            font-size: 16px;
+        }
+
+        @media only screen and (min-width: 500px) {
+            padding-top: 30px;
+
+            h1 {
+                font-size: 48px;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+        }
+
+        @media only screen and (min-width: 900px) {
+            padding-top: 100px;
+        }
     }
 }
 
@@ -200,15 +241,38 @@ body.home #tagline
 
 #callto
 {
-    width: 100%;
     margin: 0 auto;
-    padding: 25px 0 0 0;
+    padding: 15px 0 0 0;
     position: relative;
+    width: 100%;
     z-index: 25;
 
     .button {
         animation-delay: 5s;
         animation-duration: 1s;
+        clear: left;
+        display: block;
+        font-size: 1em;
+        margin-bottom: 0.75em;
+        margin-left: auto;
+        margin-right: auto;
+        width: 40%;
+
+        @media only screen and (min-width: 600px) {
+            clear: none;
+            display: inline-block;
+            margin-bottom: 1.25em;
+            width: auto;
+        }
+    }
+
+    @media only screen and (min-width: 600px) {
+        padding-top: 25px;
+
+        .button {
+            font-size: 1.25em;
+            margin-bottom: 1.5em;
+        }
     }
 }
 
@@ -330,7 +394,7 @@ nav#primary
     border-bottom: 1px solid #e5e5e5;
     box-shadow: 0 -5px 0 rgba(0, 0, 0, 0.03);
     float: left;
-    min-height: 4.25em;
+    min-height: 4.35em;
     position: relative;
     z-index: 999;
     width: 100%;
@@ -464,9 +528,14 @@ Pages
 #page
 {
     margin-bottom: 25px;
-    padding: 50px 0 25px 0;
+    padding: 25px 0 0 0;
     float: left;
     width: 100%;
+
+    @media only screen and (min-width: 500px) {
+        padding-bottom: 25px;
+        padding-top: 50px;
+    }
 
     .feature-box {
         li {
@@ -479,6 +548,18 @@ Pages
 
         h2 {
             font-size: 18px;
+        }
+    }
+
+    .feature-box__item {
+        box-sizing: border-box;
+        margin: 0;
+
+        @media only screen and (min-width: 544px) {
+            float: left;
+            padding-right: 25px;
+            //        width: 25%;
+            width: 256px;
         }
     }
 }
@@ -500,7 +581,7 @@ Pages
         }
 
         &:hover {
-            background: #f9f9f9;
+            background: #fbfbfb;
         }
 
         &:active {
@@ -754,8 +835,12 @@ Quotes
     ul li {
         font-size: 18px;
         margin: 0 auto;
-        margin-top: 60px;
+        margin-top: 25px;
         text-align: center;
+
+        @media only screen and (min-width: 500px) {
+            margin-top: 60px;
+        }
 
         p {
             color: #fff;
