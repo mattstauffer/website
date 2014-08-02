@@ -56,7 +56,7 @@
 
     <section id="copyright" class="textcenter">
         <div class="boxed">
-            <div class="animated slideInLeft">Laravel is a trademark of Taylor Otwell.<br class="br-mobile--footer"> Copyright &copy; <a href="http://twitter.com/taylorotwell" title="Taylor Otwell" target="_blank">Taylor Otwell</a>.<br class="br-mobile--footer"> Website built with &hearts; <a href="//ikreativ.com" title="iKreativ" target="_blank">iKreativ</a>; updated by <a href="//tighten.co" title="Tighten Co." target="_blank">Tighten Co.</a></div>
+            <div class="animated slideInLeft">Laravel is a trademark of Taylor Otwell.<br class="br-mobile--footer"> Copyright &copy; <a href="http://twitter.com/taylorotwell" title="Taylor Otwell" target="_blank">Taylor Otwell</a>.<br class="br-mobile--footer"> Website built with &hearts; <a href="//ikreativ.com" title="iKreativ" target="_blank">iKreativ</a>; responsive by <a href="//tighten.co" title="Tighten Co." target="_blank">Tighten Co.</a></div>
         </div>
     </section>
 
