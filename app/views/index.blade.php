@@ -9,7 +9,7 @@
     <div class="boxed">
         <div id="tagline" class="animated bounceInUp">
             <h1>The PHP Framework<br class="br-mobile__tagline"> For Web Artisans.</h1>
-            <h2>PHP That Doesn't Hurt.<br class="br-mobile__tagline">p Code Happy &amp; Enjoy The Fresh Air.</h2>
+            <h2>PHP That Doesn't Hurt.<br class="br-mobile__tagline"> Code Happy &amp; Enjoy The Fresh Air.</h2>
         </div>
 
         <div id="callto" class="animated bounceInLeft">
