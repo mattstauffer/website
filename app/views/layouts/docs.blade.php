@@ -44,7 +44,7 @@
 
             <a href="#" class="docs-show">Docs Navigation</a>
 
-            <nav id="docs">
+            <nav id="docs" class="animated">
                 {{ $index }}
             </nav>
 
