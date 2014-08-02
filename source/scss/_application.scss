@@ -571,10 +571,12 @@ Pages
         color: #777;
         display: block;
         font-size: 0.9rem;
-        padding: 0.5em 1em;
+        margin-bottom: 0.15em;
+        margin-left: 0.15rem;
+        margin-top: 0.25em;
+        padding: 0.3em 0.6em;
         width: 7rem;
         text-transform: uppercase;
-        margin-left: 1rem;
 
         @media only screen and (min-width: 1024px) {
             display: none;
@@ -680,13 +682,25 @@ Pages
 
         h1 {
             font-size: 32px;
+            margin-bottom: 0.4em;
+            margin-top: 0;
+
+            & + ul {
+                padding-top: 0;
+            }
+
+            @media only screen and (min-width: 500px) {
+                margin-bottom: 0.8em;
+                margin-top: 0.5em;
+            }
         }
 
         h2 {
             border-top: 1px solid #eee;
-            font-size: 32px;
-            margin-top: 20px;
-            padding-top: 35px;
+            font-size: 1.65rem;
+            margin-bottom: 0.4em;
+            margin-top: 0.25em;
+            padding-top: 0.75em;
 
             a {
                 color: #666;
@@ -702,13 +716,26 @@ Pages
                     }
                 }
             }
+
+            @media only screen and (min-width: 500px) {
+                font-size: 2rem;
+                margin-bottom: 0.8em;
+                margin-top: 0.625em;
+                padding-top: 1.1em;
+            }
         }
 
         h3 {
             color: #666;
-            font-size: 24px;
+            font-size: 1.15em;
+            margin-bottom: 0.4em;
             margin-top: 10px;
             padding-top: 15px;
+
+            @media only screen and (min-width: 500px) {
+                font-size: 1.5em;
+                margin-bottom: 0.8em;
+            }
         }
 
         h4 {
@@ -743,12 +770,24 @@ Pages
         blockquote {
             background: #f4726d;
             border-radius: 2px;
+            box-sizing: border-box;
             margin-bottom: 20px;
+            max-width: 100%;
             padding: 18px 20px;
-            width: 684px;
+            width: 724px;
 
             p, a {
                 color: #fff;
+            }
+        }
+
+        pre {
+            margin-left: -4em;
+            margin-right: -4em;
+
+            @media only screen and (min-width: 500px) {
+                margin-left: inherit;
+                margin-right: inherit;
             }
         }
     }
