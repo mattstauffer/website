@@ -124,6 +124,7 @@ Header
     text-align: left;
     width: 100%;
     z-index: 20;
+
 }
 
 body.home #header
@@ -134,7 +135,7 @@ body.home #header
     position: relative;
     text-align: center;
     width: 100%;
-    z-index: 20;
+    z-index: 23;
 
     @media only screen and (min-width: 500px) {
         height: 675px;
