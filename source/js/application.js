@@ -6,7 +6,6 @@ jQuery(document).ready(function($) {
         window_width = $(window).width();
     });
 
-
     // select text inputs
     $('input[type=text], textarea').focus(function() {
         $(this).select();
@@ -51,6 +50,14 @@ jQuery(document).ready(function($) {
         e.preventDefault();
 
         var $nav = $('.primary-nav-ul');
+
+        if ( ! $nav.hasClass('expanded')) {
+            if ($(window).scrollTop() < ($('#content').offset().top - 250)) {
+                $('html, body').animate({
+                    scrollTop: $("#content").offset().top - 250
+                }, 1000);
+            }
+        }
 
         $nav.toggleClass('expanded');
 
