@@ -63,8 +63,6 @@ jQuery(document).ready(function($) {
                 return true;
             }
 
-            console.log('yut');
-
             $nav.removeClass('expanded');
             $(document).off('.dismiss-primary-nav');
         });

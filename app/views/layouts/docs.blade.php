@@ -42,7 +42,7 @@
     <section id="documentation">
         <article class="boxed">
 
-            <a href="#" class="docs-show">Docs Menu</a>
+            <a href="#" class="docs-show">Navigate</a>
 
             <nav id="docs" class="animated">
                 {{ $index }}

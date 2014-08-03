@@ -182,7 +182,7 @@ body.dashboard #header
 
     body.home & {
         margin: 0 auto;
-        padding-top: 40px;
+        padding-top: 100px;
         position: relative;
         width: 100%;
         z-index: 25;
@@ -242,7 +242,7 @@ body.dashboard #header
 #callto
 {
     margin: 0 auto;
-    padding: 15px 0 0 0;
+    padding: 15px 0 10px 0;
     position: relative;
     width: 100%;
     z-index: 25;
@@ -252,27 +252,26 @@ body.dashboard #header
         animation-duration: 1s;
         clear: left;
         display: block;
-        font-size: 1em;
+        font-size: 0.8em;
         margin-bottom: 0.75em;
         margin-left: auto;
         margin-right: auto;
+        padding: 0.625em 1.25em;
         width: 50%;
 
         @media only screen and (min-width: 600px) {
             clear: none;
             display: inline-block;
+            font-size: 1em;
+            padding: 15px 25px;
             margin-bottom: 1.25em;
             width: auto;
         }
     }
 
     @media only screen and (min-width: 600px) {
+        padding-bottom: 0;
         padding-top: 25px;
-
-        .button {
-            font-size: 1.25em;
-            margin-bottom: 1.5em;
-        }
     }
 }
 
