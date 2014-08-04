@@ -554,6 +554,8 @@ Content
 {
     background: #f5f5f5;
     float: left;
+    // For iOS when left nav is expanded:
+    overflow: hidden;
     position: relative;
     width: 100%;
     z-index: 99;

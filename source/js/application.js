@@ -27,7 +27,6 @@ jQuery(document).ready(function($) {
             // If button is being clicked
             $button.text($button.data('hide-text'));
             $wrapper.addClass('nav-expanded');
-
         }
     });
 
