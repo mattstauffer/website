@@ -12,36 +12,22 @@ jQuery(document).ready(function($) {
     });
 
     // Responsive docs nav
-    $('.docs-show').on('click', function(e) {
-        e.preventDefault();
+    $(document).on('click', function (e) {
+        var $wrapper = $('#documentation'),
+            $button = $('.docs-show');
 
-        var $nav = $('nav#docs'),
-            $body = $('#docs-content'),
-            $fixed_header = $('nav#primary'),
-            nav_padding_offset = 90;
-
-        // Display the nav and fit the nav on the screen as-is
-        // @todo: Update this on resize and dismiss it all if we get big enough to not need the small-screen version
-        $nav
-            .toggleClass('expanded')
-            .css('height', $(window).height() - $fixed_header.outerHeight() - nav_padding_offset);
-
-        $(document).on('click.dismiss-docs-nav', function(e) {
-            if (e.target == $('.docs-show')[0] && $nav.hasClass('expanded')) {
-                // Ignore if it's the button
-                return;
-            } else if ($(e.target).closest('nav#docs').length > 0) {
-                // Ignore if it's a click within the nav
-                return true;
+        if ($wrapper.hasClass('nav-expanded')) {
+            // If we might be dismissing
+            if ($(e.target).closest('nav#docs').length == 0) {
+                // If click isn't within the docs navigation, go ahead and dismiss it
+                $button.text($button.data('show-text'));
+                $wrapper.removeClass('nav-expanded');
             }
+        } else if (e.target == $('.docs-show')[0]) {
+            // If button is being clicked
+            $button.text($button.data('hide-text'));
+            $wrapper.addClass('nav-expanded');
 
-            $nav.removeClass('expanded');
-            $(document).off('.dismiss-docs-nav');
-        });
-
-        // Trim to body if bigger than
-        if ($nav.outerHeight() > $body.outerHeight()) {
-            $nav.css('height', $body.outerHeight() - nav_padding_offset);
         }
     });
 
@@ -52,7 +38,6 @@ jQuery(document).ready(function($) {
         var $nav_wrapper = $('nav#primary');
 
         if ( ! $nav_wrapper.hasClass('expanded')) {
-            console.log('Comparing whether window ' + $(window).scrollTop() + ' is less than content top ' + $('#content').offset().top);
             if ($(window).scrollTop() < ($('#content').offset().top - 250)) {
                 var yOffset = screen.height - $('.primary-nav-ul').outerHeight();
                 $('html, body').animate({
