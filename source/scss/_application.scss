@@ -151,6 +151,10 @@ body.home #header
     width: 100%;
 
     @media only screen and (min-width: 500px) {
+        background-size: 150%;
+    }
+
+    @media only screen and (min-width: 750px) {
         background-size: auto;
         border-radius: 0.5em 0.5em 0 0;
         height: 355px;
@@ -430,6 +434,17 @@ nav#primary
     position: relative;
     z-index: 999;
     width: 100%;
+
+    &.fixed {
+        opacity: 0.9;
+        position: fixed;
+        top: 0;
+        width: 100%;
+    }
+
+    &.expanded {
+        opacity: 1;
+    }
 }
 
 .primary-nav-ul {
@@ -437,9 +452,8 @@ nav#primary
     border: 1px solid rgba(0, 0, 0, 0.1);
     box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.05);
     display: none;
-    left: 1em;
+    left: 0;
     position: absolute;
-    right: 1em;
     top: 4.25rem;
 
     @media only screen and (min-width: 750px) {
@@ -448,13 +462,11 @@ nav#primary
         box-shadow: none;
         display: block;
         float: right;
-        left: 0;
         position: relative;
-        right: 0;
         top: 0;
     }
 
-    &.expanded {
+    .expanded & {
         display: block;
     }
 
@@ -468,21 +480,29 @@ nav#primary
         }
 
         a {
+            border-bottom: 1px solid #eee;
             color: #aaa;
             display: block;
-            font-size: 12px;
+            font-size: 14px;
             font-weight: 600;
             letter-spacing: 1px;
             padding: 0.8em 1.4em;
             text-transform: uppercase;
 
             @media only screen and (min-width: 750px) {
+                border-bottom: 0;
+                font-size: 12px;
                 padding: 0 0 0 25px;
                 width: auto;
 
                 &:hover {
                     background: inherit;
                 }
+            }
+
+            // Adjust for short (horizontal, likely) devices
+            @media only screen and (max-height: 400px) and (max-width: 749px) {
+                padding: 0.45em 1.4em;
             }
 
             &:hover {
@@ -565,7 +585,7 @@ Pages
     float: left;
     width: 100%;
 
-    @media only screen and (min-width: 500px) {
+    @media only screen and (min-width: 750px) {
         padding-bottom: 25px;
         padding-top: 50px;
     }
