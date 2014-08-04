@@ -49,9 +49,9 @@
                 </li>
                 @endforeach
             </ul>
-            <a href="#" class="docs-show">Navigate</a>
+            <a href="#" class="docs-show" data-show-text="Navigate" data-hide-text="Close">Navigate</a>
 
-            <nav id="docs" class="animated">
+            <nav id="docs">
                 {{ $index }}
             </nav>
 
