@@ -20,6 +20,18 @@
  stylesheets by simply adding different body classes per-page
  and hooking into them.
 
+
+ - Breakpoints:
+    Width 500px: Generic mobile one-column below this
+    Width 750px: Generic mobile two-column below this
+    Width 800px: "Desktop" break (fixed nav on all circumstances, etc.)
+    Width 850px and 900px: "Breathing room" breaks (relaxed typography, seldom used)
+    Width 1024px: "Stretch out" break (expect wide desktop, constrain site and bring in white space)
+
+ Additionally, the columns of factoids on the front page use 500px, 750px, and 1000px to break into various #s of columns
+
+ - Responsive @todo: Create mixins for some of the breakpoints with view logic.
+   E.g. unfixed-header(CSS HERE)
 */
 /*
 ----------------------------------------------------------
@@ -118,18 +130,22 @@ Header
 #header
 {
     background: #f4726d;
-    height: 100px;
+    height: 115px;
     overflow: hidden;
     position: relative;
     text-align: left;
     width: 100%;
     z-index: 20;
+
+    @media only screen and (min-width: 800px) {
+        height: 100px;
+    }
 }
 
 body.home #header
 {
     background: #f4726d url("../img/header.jpg") no-repeat;
-    height: 535px;
+    height: 525px;
     overflow: hidden;
     padding-top: 20px;
 
@@ -172,7 +188,7 @@ body.dashboard #header
 #tagline
 {
     margin: 0 auto;
-    padding-top: 15px;
+    padding-top: 55px;
     position: relative;
     width: 100%;
     z-index: 25;
@@ -185,6 +201,10 @@ body.dashboard #header
         margin-top: 0.5em;
         text-transform: uppercase;
         text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    }
+
+    @media only screen and (min-width: 800px) {
+        padding-top: 15px;
     }
 
     body.home & {
@@ -409,11 +429,15 @@ Logo Head
 #logo-head
 {
     float: left;
-    padding-top: 21px;
+    padding-top: 8px;
     transition: 250ms linear all;
 
     &:hover {
         margin-top: -2px;
+    }
+
+    @media only screen and (min-width: 750px) {
+        padding-top: 21px;
     }
 }
 
@@ -447,14 +471,12 @@ nav#primary
         opacity: 1;
     }
 
+    // @todo: Having only one max is confusing.
     @media only screen and (max-width: 800px) {
+        min-height: 3rem;
         opacity: 0.9;
         position: fixed;
         top: 0;
-
-        &.fixed {
-
-        }
     }
 }
 
@@ -539,7 +561,7 @@ nav#primary
     font-size: 0.9em;
     font-weight: 600;
     margin-right: 0;
-    margin-top: 1.25rem;
+    margin-top: 0.65rem;
     padding: 0.25rem 0.75rem;
     text-transform: uppercase;
 
