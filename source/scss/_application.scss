@@ -30,6 +30,9 @@
 
  Additionally, the columns of factoids on the front page use 500px, 750px, and 1000px to break into various #s of columns
 
+ There's an awkward space between 750px and 800px because most of the breaks around there are at 750, but some things we'd
+ rather not happen on a tall tablet, usually 768px width.
+
  - Responsive @todo: Create mixins for some of the breakpoints with view logic.
    E.g. unfixed-header(CSS HERE)
 */
@@ -137,6 +140,11 @@ Header
     width: 100%;
     z-index: 20;
 
+    // @todo: Consider merging 750 and 800 across the board
+    @media only screen and (min-width: 750px) {
+        height: 140px;
+    }
+
     @media only screen and (min-width: 800px) {
         height: 100px;
     }
@@ -201,6 +209,10 @@ body.dashboard #header
         margin-top: 0.5em;
         text-transform: uppercase;
         text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    }
+
+    @media only screen and (min-width: 750px) {
+        padding-top: 75px;
     }
 
     @media only screen and (min-width: 800px) {
@@ -471,8 +483,8 @@ nav#primary
         opacity: 1;
     }
 
-    // @todo: Having only one max is confusing.
-    @media only screen and (max-width: 800px) {
+    // @todo: Having only one max is confusing. This should be min.
+    @media only screen and (max-width: 759px) {
         min-height: 3rem;
         opacity: 0.9;
         position: fixed;
@@ -696,6 +708,10 @@ Pages
         width: 5rem;
         text-transform: uppercase;
 
+        @media only screen and (min-width: 500px) {
+            font-size: 1.1rem;
+        }
+
         @media only screen and (min-width: 1024px) {
             display: none;
         }
@@ -720,6 +736,7 @@ Pages
     }
 
     nav#docs, #docs-content {
+        box-sizing: border-box;
         transition: transform 0.5s ease;
     }
 
@@ -734,6 +751,7 @@ Pages
             float: left;
             padding: 45px 0;
             position: relative;
+            transform: translateX(0px);
         }
 
         ul li {
