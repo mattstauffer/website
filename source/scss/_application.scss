@@ -20,6 +20,21 @@
  stylesheets by simply adding different body classes per-page
  and hooking into them.
 
+
+ - Breakpoints:
+    Width 500px: Generic mobile one-column below this
+    Width 750px: Generic mobile two-column below this
+    Width 800px: "Desktop" break (fixed nav on all circumstances, etc.)
+    Width 850px and 900px: "Breathing room" breaks (relaxed typography, seldom used)
+    Width 1024px: "Stretch out" break (expect wide desktop, constrain site and bring in white space)
+
+ Additionally, the columns of factoids on the front page use 500px, 750px, and 1000px to break into various #s of columns
+
+ There's an awkward space between 750px and 800px because most of the breaks around there are at 750, but some things we'd
+ rather not happen on a tall tablet, usually 768px width.
+
+ - Responsive @todo: Create mixins for some of the breakpoints with view logic.
+   E.g. unfixed-header(CSS HERE)
 */
 /*
 ----------------------------------------------------------
@@ -118,13 +133,21 @@ Header
 #header
 {
     background: #f4726d;
-    height: 100px;
+    height: 115px;
     overflow: hidden;
     position: relative;
     text-align: left;
     width: 100%;
     z-index: 20;
 
+    // @todo: Consider merging 750 and 800 across the board
+    @media only screen and (min-width: 750px) {
+        height: 140px;
+    }
+
+    @media only screen and (min-width: 800px) {
+        height: 100px;
+    }
 }
 
 body.home #header
@@ -132,6 +155,8 @@ body.home #header
     background: #f4726d url("../img/header.jpg") no-repeat;
     height: 525px;
     overflow: hidden;
+    padding-top: 20px;
+
     position: relative;
     text-align: center;
     width: 100%;
@@ -140,6 +165,7 @@ body.home #header
     @media only screen and (min-width: 500px) {
         height: 675px;
         padding-bottom: 0;
+        padding-top: 40px;
     }
 }
 
@@ -151,7 +177,7 @@ body.home #header
     width: 100%;
 
     @media only screen and (min-width: 500px) {
-        background-size: 150%;
+        background-size: 155%;
     }
 
     @media only screen and (min-width: 750px) {
@@ -169,10 +195,10 @@ body.dashboard #header
 
 #tagline
 {
-    width: 100%;
     margin: 0 auto;
-    padding-top: 15px;
+    padding-top: 55px;
     position: relative;
+    width: 100%;
     z-index: 25;
 
     h1 {
@@ -183,6 +209,14 @@ body.dashboard #header
         margin-top: 0.5em;
         text-transform: uppercase;
         text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    }
+
+    @media only screen and (min-width: 750px) {
+        padding-top: 75px;
+    }
+
+    @media only screen and (min-width: 800px) {
+        padding-top: 15px;
     }
 
     body.home & {
@@ -214,7 +248,7 @@ body.dashboard #header
         }
 
         @media only screen and (min-width: 500px) {
-            padding-top: 30px;
+            padding-top: 40px;
 
             h1 {
                 font-size: 48px;
@@ -225,7 +259,7 @@ body.dashboard #header
             }
         }
 
-        @media only screen and (min-width: 900px) {
+        @media only screen and (min-width: 800px) {
             padding-top: 100px;
         }
     }
@@ -264,7 +298,7 @@ body.dashboard #header
         padding: 1em 1.35em;
         width: 50%;
 
-        @media only screen and (min-width: 600px) {
+        @media only screen and (min-width: 750px) {
             clear: none;
             display: inline-block;
             font-size: 1em;
@@ -274,7 +308,7 @@ body.dashboard #header
         }
     }
 
-    @media only screen and (min-width: 600px) {
+    @media only screen and (min-width: 750px) {
         padding-bottom: 0;
         padding-top: 25px;
     }
@@ -407,11 +441,15 @@ Logo Head
 #logo-head
 {
     float: left;
-    padding-top: 21px;
+    padding-top: 8px;
     transition: 250ms linear all;
 
     &:hover {
         margin-top: -2px;
+    }
+
+    @media only screen and (min-width: 750px) {
+        padding-top: 21px;
     }
 }
 
@@ -439,11 +477,18 @@ nav#primary
         opacity: 0.9;
         position: fixed;
         top: 0;
-        width: 100%;
     }
 
     &.expanded {
         opacity: 1;
+    }
+
+    // @todo: Having only one max is confusing. This should be min.
+    @media only screen and (max-width: 759px) {
+        min-height: 3rem;
+        opacity: 0.9;
+        position: fixed;
+        top: 0;
     }
 }
 
@@ -454,7 +499,7 @@ nav#primary
     display: none;
     left: 0;
     position: absolute;
-    top: 4.25rem;
+    top: 3rem;
 
     @media only screen and (min-width: 750px) {
         background: none;
@@ -528,7 +573,7 @@ nav#primary
     font-size: 0.9em;
     font-weight: 600;
     margin-right: 0;
-    margin-top: 1.25rem;
+    margin-top: 0.65rem;
     padding: 0.25rem 0.75rem;
     text-transform: uppercase;
 
@@ -567,6 +612,12 @@ Content
             color: #222;
         }
     }
+
+    &.nav-fixed {
+        @media only screen and (min-width: 800px) {
+            padding-top: 75px;
+        }
+    }
 }
 
 /*
@@ -587,7 +638,7 @@ Pages
     float: left;
     width: 100%;
 
-    @media only screen and (min-width: 750px) {
+    @media only screen and (min-width: 800px) {
         padding-bottom: 25px;
         padding-top: 50px;
     }
@@ -610,11 +661,36 @@ Pages
         box-sizing: border-box;
         margin: 0;
 
-        @media only screen and (min-width: 544px) {
+        @media only screen and (min-width: 500px) {
             float: left;
             padding-right: 25px;
-            //        width: 25%;
-            width: 256px;
+            width: 50%;
+
+            &:nth-of-type(2n+1) {
+                clear: left;
+            }
+        }
+
+        @media only screen and (min-width: 750px) {
+            width: 33%;
+
+            &:nth-of-type(2n+1) {
+                clear: none;
+            }
+            &:nth-of-type(3n+1) {
+                clear: left;
+            }
+        }
+
+        @media only screen and (min-width: 1000px) {
+            width: 25%;
+
+            &:nth-of-type(3n+1) {
+                clear: none;
+            }
+            &:nth-of-type(4n+1) {
+                clear: left;
+            }
         }
     }
 }
@@ -631,6 +707,10 @@ Pages
         padding: 0.3em 0.6em;
         width: 5rem;
         text-transform: uppercase;
+
+        @media only screen and (min-width: 500px) {
+            font-size: 1.1rem;
+        }
 
         @media only screen and (min-width: 1024px) {
             display: none;
@@ -656,6 +736,7 @@ Pages
     }
 
     nav#docs, #docs-content {
+        box-sizing: border-box;
         transition: transform 0.5s ease;
     }
 
@@ -670,6 +751,7 @@ Pages
             float: left;
             padding: 45px 0;
             position: relative;
+            transform: translateX(0px);
         }
 
         ul li {
@@ -929,13 +1011,16 @@ Quotes
 
     ul li {
         font-size: 1rem;
-
         margin: 0 auto;
         margin-top: 1.5625rem;
         text-align: center;
 
         @media only screen and (min-width: 500px) {
             font-size: 1.125rem;
+            margin-top: 2.15rem;
+        }
+
+        @media only screen and (min-width: 750px) {
             margin-top: 3.75rem;
         }
 

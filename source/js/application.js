@@ -36,15 +36,6 @@ jQuery(document).ready(function($) {
 
         var $nav_wrapper = $('nav#primary');
 
-        if ( ! $nav_wrapper.hasClass('expanded')) {
-            if ($(window).scrollTop() < ($('#content').offset().top - 250)) {
-                var yOffset = screen.height - $('.primary-nav-ul').outerHeight();
-                $('html, body').animate({
-                    scrollTop: $("#content").offset().top - yOffset
-                }, 1000);
-            }
-        }
-
         $nav_wrapper.toggleClass('expanded');
 
         $(document).on('click.dismiss-primary-nav', function(e) {
@@ -82,24 +73,23 @@ jQuery(document).ready(function($) {
     var nav      = $('nav#primary');
     var content  = $('#content');
     var docs     = $('#docs-content');
-    var navHomeY = nav.offset().top;
+//    var navHomeY = nav.offset().top;
+    // Sticky nav only on non-mobile @todo will have to update this on every resize
+    var navHomeY = screen.width > 800 ? nav.offset().top : 0;
     var isFixed  = false;
     var $w       = $(window);
 
     $w.scroll(function()
     {
         var scrollTop = $w.scrollTop();
-        var shouldBeFixed = scrollTop > navHomeY;
+        var shouldBeFixed = scrollTop >= navHomeY;
         if ( shouldBeFixed && ! isFixed )
         {
             nav.addClass('fixed');
-
-            content.css({
-                paddingTop: '75px'
-            });
+            content.addClass('nav-fixed');
 
             docs.css({
-                paddingTop: '27px',
+                paddingTop: '27px'
             });
 
             isFixed = true;
@@ -107,11 +97,7 @@ jQuery(document).ready(function($) {
         else if ( ! shouldBeFixed && isFixed )
         {
             nav.removeClass('fixed');
-
-
-            content.css({
-                paddingTop: '0'
-            });
+            content.removeClass('nav-fixed');
 
             docs.css({
                 paddingTop: '27px'
