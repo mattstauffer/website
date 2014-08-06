@@ -133,7 +133,7 @@ Header
 #header
 {
     background: #f4726d;
-    height: 115px;
+    height: 125px;
     overflow: hidden;
     position: relative;
     text-align: left;
@@ -733,6 +733,7 @@ Pages
 
         @media only screen and (min-width: 500px) {
             font-size: 1.1rem;
+            width: 5.25rem;
         }
 
         @media only screen and (min-width: 1024px) {
