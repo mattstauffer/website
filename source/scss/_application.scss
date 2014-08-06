@@ -1102,13 +1102,13 @@ Logo Foot
 {
     transition: 250ms linear all;
 
-    @media only screen and (min-width: 500px) {
+    @media only screen and (min-width: 750px) {
         float: left;
         padding-top: 15px;
-    }
 
-    &:hover {
-        margin-top: -2px;
+        &:hover {
+            margin-top: -2px;
+        }
     }
 }
 /*
@@ -1124,7 +1124,7 @@ nav#secondary
 {
     width: 100%;
 
-    @media only screen and (min-width: 500px) {
+    @media only screen and (min-width: 750px) {
         float: left;
     }
 
@@ -1134,24 +1134,17 @@ nav#secondary
         margin-right: -0.25em;
         margin-top: 0.6em;
 
-        @media only screen and (min-width: 500px) {
+        @media only screen and (min-width: 750px) {
             clear: none;
             margin-left: inherit;
             margin-right: inherit;
+            margin-top: 0;
             float: right;
         }
 
-        @media only screen and (min-width: 750px) {
-            margin-top: 0;
-        }
-
         li {
-            float: left;
-            padding: 4px;
-
-            &:nth-of-type(4) {
-                clear: left;
-            }
+            display: block;
+            width: 100%;
 
             a {
                 color: #aaa;
@@ -1159,7 +1152,7 @@ nav#secondary
                 font-size: 11px;
                 font-weight: 600;
                 letter-spacing: 1px;
-                padding: 2px 5px;
+                padding: 6px 9px;
                 text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
                 text-transform: uppercase;
             }
@@ -1169,7 +1162,9 @@ nav#secondary
             }
 
             @media only screen and (min-width: 750px) {
+                float: left;
                 padding: 15px 0 20px 0;
+                width: auto;
 
                 &:nth-of-type(4) {
                     clear: none;
