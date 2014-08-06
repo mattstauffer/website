@@ -77,11 +77,15 @@ jQuery(document).ready(function($) {
     var nav      = $('nav#primary');
     var content  = $('#content');
     var docs     = $('#docs-content');
-//    var navHomeY = nav.offset().top;
-    // Sticky nav only on non-mobile @todo will have to update this on every resize
+    // Sticky nav only on non-mobile
     var navHomeY = screen.width > 800 ? nav.offset().top : 0;
     var isFixed  = false;
     var $w       = $(window);
+
+    $w.resize(function()
+    {
+        navHomeY = screen.width > 800 ? nav.offset().top : 0;
+    });
 
     $w.scroll(function()
     {
