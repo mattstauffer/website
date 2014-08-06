@@ -510,7 +510,7 @@ nav#primary
     // @todo: Having only one max is confusing. This should be min.
     @media only screen and (max-width: 799px) {
         min-height: 3rem;
-        opacity: 0.9;
+//        opacity: 0.9;
         position: fixed;
         top: 0;
     }

@@ -78,20 +78,20 @@ jQuery(document).ready(function($) {
     var nav      = $('nav#primary');
     var content  = $('#content');
     var docs     = $('#docs-content');
-    // Sticky nav only on non-mobile
-    var navHomeY = screen.width > 800 ? nav.offset().top : 0;
     var isFixed  = false;
     var $w       = $(window);
+    // Sticky nav only on non-mobile
+    var navHomeY = $w.width() > 800 ? nav.offset().top : 0;
 
     $w.resize(function()
     {
-        navHomeY = screen.width > 800 ? nav.offset().top : 0;
+        navHomeY = $w.width() > 800 ? nav.offset().top : 0;
     });
 
     $w.scroll(function()
     {
         var scrollTop = $w.scrollTop();
-        var shouldBeFixed = scrollTop >= navHomeY;
+        var shouldBeFixed = scrollTop > navHomeY;
         if ( shouldBeFixed && ! isFixed )
         {
             nav.addClass('fixed');
