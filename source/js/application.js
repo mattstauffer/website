@@ -1,4 +1,5 @@
 jQuery(document).ready(function($) {
+    // @todo: Refactor this entire document
     // Cache window width on resize to reduce DOM lookups
     var window_width = $(window).width();
 
@@ -77,16 +78,20 @@ jQuery(document).ready(function($) {
     var nav      = $('nav#primary');
     var content  = $('#content');
     var docs     = $('#docs-content');
-//    var navHomeY = nav.offset().top;
-    // Sticky nav only on non-mobile @todo will have to update this on every resize
-    var navHomeY = screen.width > 800 ? nav.offset().top : 0;
     var isFixed  = false;
     var $w       = $(window);
+    // Sticky nav only on non-mobile
+    var navHomeY = $w.width() > 800 ? nav.offset().top : 0;
+
+    $w.resize(function()
+    {
+        navHomeY = $w.width() > 800 ? nav.offset().top : 0;
+    });
 
     $w.scroll(function()
     {
         var scrollTop = $w.scrollTop();
-        var shouldBeFixed = scrollTop >= navHomeY;
+        var shouldBeFixed = scrollTop > navHomeY;
         if ( shouldBeFixed && ! isFixed )
         {
             nav.addClass('fixed');
@@ -102,12 +107,6 @@ jQuery(document).ready(function($) {
             isFixed = false;
         }
     });
-
-    // make sure nav stays full width on resize
-    // This is completely unnecessary.
-//    $( window ).resize(function() {
-//        $( "nav#primary" ).css({ width: '100%' });
-//    });
 
     var header_height = $('#header').outerHeight() + 50; // Add 50 for good measure
 
