@@ -126,5 +126,25 @@ Route::get('docs/{page?}', function($page = null)
 
 	if ($contents == 'Not Found') return Redirect::to('docs');
 
-	return View::make('layouts.docs', compact('index', 'contents'));
+    // @todo: Remove duplication between this and the array above
+    $docs_versions = [
+        'master' => [
+            'title' => 'Dev',
+            'url_key' => 'dev',
+        ],
+        '4.2' => [
+            'title' => '4.2',
+            'url_key' => '4-2',
+        ],
+        '4.1' => [
+            'title' => '4.1',
+            'url_key' => '4-1',
+        ],
+        '4.0' => [
+            'title' => '4.0',
+            'url_key' => '4-0',
+        ],
+    ];
+
+	return View::make('layouts.docs', compact('index', 'contents', 'docs_versions'));
 });

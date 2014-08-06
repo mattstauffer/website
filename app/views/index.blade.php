@@ -1,38 +1,33 @@
 @extends('layouts.master')
 
+@section('body_opening')
+<body id="index" class="page home">
+@show
+
 @section('content')
-<!-- header -->
 <header id="header" role="header">
     <div class="boxed">
-        <!-- tagline -->
         <div id="tagline" class="animated bounceInUp">
-            <h1>The PHP Framework For Web Artisans.</h1>
-            <h2>PHP That Doesn't Hurt. Code Happy & Enjoy The Fresh Air.</h2>
+            <h1>The PHP Framework<br class="br-mobile__tagline"> For Web Artisans.</h1>
+            <h2>PHP That Doesn't Hurt.<br class="br-mobile__tagline"> Code Happy &amp; Enjoy The Fresh Air.</h2>
         </div>
-        <!-- /tagline -->
 
-        <!-- callto action -->
         <div id="callto" class="animated bounceInLeft">
             <a href="docs/quick" class="button large animated shake">Quickstart</a>
             <a href="http://laracon.eu" class="button large animated shake">Laracon EU</a>
             <a href="https://forge.laravel.com" class="button large animated shake">Laravel Forge</a>
         </div>
-        <!-- /callto action -->
 
-        <!-- ui -->
-        <div class="animated fadeIn" id="header_image" style="background: url(assets/img/sublime.png) top center no-repeat;"></div>
-        <!-- /ui -->
+        <div class="animated fadeIn sublime-header" id="header_image"></div>
     </div>
 </header>
-<!-- /header -->
 
-<!-- nav -->
 <nav id="primary">
     <div class="boxed">
         <div id="logo-head">
-           <a href="//laravel.com"><img src="assets/img/logo-head.png" alt="Laravel" /></a>
+           <a href="//laravel.com"><img src="assets/img/logo-head.png" alt="Laravel"></a>
         </div>
-        <ul>
+        <ul class="primary-nav-ul">
             <li class="current-item"><a href="#">Welcome</a></li>
             <li><a href="https://forge.laravel.com">Hosting</a></li>
             <li><a href="docs" title="Documentation">Documentation</a></li>
@@ -41,58 +36,53 @@
             <li><a href="http://laravel.io/forum" title="Laravel Forums">Forums</a></li>
             <li><a href="//twitter.com/laravelphp" title="Laravel on Twitter">Twitter</a></li>
         </ul>
+        <a href="#" class="show-primary-nav">Menu</a>
     </div>
 </nav>
-<!-- /nav -->
 
-<!-- content -->
 <div id="content">
 
-    <!-- page -->
     <section id="page">
         <article class="boxed">
             <ul class="feature-box nolist">
-                <li class="one_quarter">
+                <li class="feature-box__item">
                     <h2><i class="icon-random"></i> <a title="RESTful Routing" href="docs/routing">RESTful Routing</a></h2>
                     <p>Use simple Closures to respond to requests to your application. It couldn't be easier to get started building amazing applications.</p>
                 </li>
-                <li class="one_quarter">
+                <li class="feature-box__item">
                     <h2><i class="icon-graph"></i> <a title="Command Your Data" href="docs/eloquent">Command Your Data</a></h2>
                     <p>Ships with the amazing Eloquent ORM and a great migration system. Works great on MySQL, Postgres, SQL Server, and SQLite.</p>
                 </li>
-                <li class="one_quarter">
+                <li class="feature-box__item">
                     <h2><i class="icon-pencil-alt"></i> <a title="Beautiful Templating" href="docs/templates">Beautiful Templating</a></h2>
                     <p>Use native PHP or the light-weight Blade templating engine. Blade provides great template inheritance and is blazing fast. You'll love it.</p>
                 </li>
-                <li class="one_quarter">
+                <li class="feature-box__item">
                     <h2><i class="icon-time"></i> <a title="Ready For Tomorrow" href="docs/routing">Ready For Tomorrow</a></h2>
                     <p>Build huge enterprise applications, or simple JSON APIs. Write powerful controllers, or slim RESTful routes. Laravel is perfect for jobs of all sizes.</p>
                 </li>
-                <li class="one_quarter">
+                <li class="feature-box__item">
                     <h2><i class="icon-cog"></i> <a title="Proven Foundation" href="http://www.symfony.com">Proven Foundation</a></h2>
                     <p>Laravel is built on top of several Symfony components, giving your application a great foundation of well-tested and reliable code.</p>
                 </li>
-                <li class="one_quarter">
+                <li class="feature-box__item">
                     <h2><i class="icon-star"></i> <a title="Composer Powered" href="http://getcomposer.org">Composer Powered</a></h2>
                     <p>Composer is an amazing tool to manage your application's third-party packages. Find packages on Packagist and use them in seconds.</p>
                 </li>
-                <li class="one_quarter">
+                <li class="feature-box__item">
                     <h2><i class="icon-group"></i> <a title="Great Community" href="http://laravel.io/forum">Great Community</a></h2>
                     <p>Whether you're a PHP beginner or architecture astronaut, you'll fit right in. Discuss ideas in the IRC chat room, or post questions in the forum.</p>
                 </li>
-                <li class="one_quarter">
+                <li class="feature-box__item">
                     <h2><i class="icon-wrench"></i> <a title="Red, Green, Refactor" href="docs/testing">Red, Green, Refactor</a></h2>
                     <p>Laravel is built with testing in mind. Stay flexible with the IoC container, and run your tests with PHPUnit. Don't worry... it's easier than you think.</p>
                 </li>
             </ul>
         </article>
     </section>
-    <!-- /page -->
 
 </div>
-<!-- /content -->
 
-<!-- quotes -->
 <section id="quotes">
    <article class="boxed">
        <ul id="quote" class="nolist textcenter aligncenter">
@@ -115,16 +105,13 @@
        </ul>
    </article>
 </section>
-<!-- /quotes -->
 
-<!-- footer -->
 <footer id="foot" class="textcenter">
     <div class="boxed">
 
-        <!-- nav -->
         <nav id="secondary">
             <div id="logo-foot">
-	           <a href="//laravel.com"><img src="assets/img/logo-foot.png" alt="Laravel" /></a>
+	           <a href="//laravel.com"><img src="assets/img/logo-foot.png" alt="Laravel"></a>
 	        </div>
             <ul>
                 <li class="current-item"><a href="#">Welcome</a></li>
@@ -136,17 +123,13 @@
                 <li><a href="//twitter.com/laravelphp" title="Laravel on Twitter">Twitter</a></li>
             </ul>
         </nav>
-        <!-- /nav -->
 
     </div>
 </footer>
-<!-- /footer -->
 
-<!-- to the top -->
 <div id="top">
     <a href="#index" title="Back to the top">
         <i class="icon-chevron-up"></i>
     </a>
 </div>
-<!-- /to the top -->
 @endsection

@@ -28,32 +28,32 @@ hgroup,
 nav, 
 section 
 { 
-	display: block; 
-	margin: 0 auto;
+    display: block;
+    margin: 0 auto;
 }
 
 audio, 
 canvas, 
 video 
 { 
-	display: inline-block; 
-	*display: inline; 
-	*zoom: 1; 
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
 }
 
 audio:not([controls]) 
 { 
-	display: none; 
+    display: none;
 }
 
 [hidden] 
 { 
-	display: none; 
+    display: none;
 }
 
 figure 
 { 
-	margin: 0; 
+    margin: 0;
 }
 /* @end HTML5 display definitions */
 
@@ -63,15 +63,15 @@ figure
 html, 
 body 
 {
-	height: 100%; 
-	margin: 0; 
-	padding: 0;
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 body 
 {   
-	width: 100%; 
-	overflow-x: hidden; 
+    width: 100%;
+    overflow-x: hidden;
 }
 /* @end Base */
 
@@ -80,15 +80,15 @@ body
  */
 img 
 { 
-	-ms-interpolation-mode: bicubic; 
-	vertical-align: middle; 
-	border: 0; 
-	outline: 0; 
+    -ms-interpolation-mode: bicubic;
+    vertical-align: middle;
+    border: 0;
+    outline: 0;
 }
 
 /* correct overflow not hidden in IE9 */
 svg:not(:root) 
 { 
-	overflow: hidden; 
+    overflow: hidden;
 }
 /* @end Embedded content */
