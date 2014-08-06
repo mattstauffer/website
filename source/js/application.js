@@ -92,20 +92,12 @@ jQuery(document).ready(function($) {
             nav.addClass('fixed');
             content.addClass('nav-fixed');
 
-            docs.css({
-                paddingTop: '27px'
-            });
-
             isFixed = true;
         }
         else if ( ! shouldBeFixed && isFixed )
         {
             nav.removeClass('fixed');
             content.removeClass('nav-fixed');
-
-            docs.css({
-                paddingTop: '27px'
-            });
 
             isFixed = false;
         }
