@@ -20,10 +20,14 @@ jQuery(document).ready(function($) {
             // If we might be dismissing
             if ($(e.target).closest('nav#docs').length == 0) {
                 // If click isn't within the docs navigation, go ahead and dismiss it
+                e.preventDefault();
+
                 $button.text($button.data('show-text'));
                 $wrapper.removeClass('nav-expanded');
             }
         } else if (e.target == $('.docs-show')[0]) {
+            e.preventDefault();
+
             // If button is being clicked
             $button.text($button.data('hide-text'));
             $wrapper.addClass('nav-expanded');
@@ -88,20 +92,12 @@ jQuery(document).ready(function($) {
             nav.addClass('fixed');
             content.addClass('nav-fixed');
 
-            docs.css({
-                paddingTop: '27px'
-            });
-
             isFixed = true;
         }
         else if ( ! shouldBeFixed && isFixed )
         {
             nav.removeClass('fixed');
             content.removeClass('nav-fixed');
-
-            docs.css({
-                paddingTop: '27px'
-            });
 
             isFixed = false;
         }
