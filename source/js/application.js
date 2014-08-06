@@ -1,4 +1,5 @@
 jQuery(document).ready(function($) {
+    // @todo: Refactor this entire document
     // Cache window width on resize to reduce DOM lookups
     var window_width = $(window).width();
 
@@ -106,12 +107,6 @@ jQuery(document).ready(function($) {
             isFixed = false;
         }
     });
-
-    // make sure nav stays full width on resize
-    // This is completely unnecessary.
-//    $( window ).resize(function() {
-//        $( "nav#primary" ).css({ width: '100%' });
-//    });
 
     var header_height = $('#header').outerHeight() + 50; // Add 50 for good measure
 
