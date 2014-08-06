@@ -167,8 +167,13 @@ body.home #header
         padding-bottom: 0;
         padding-top: 40px;
     }
+
+    @media only screen and (min-width: 800px) {
+        padding-top: 0;
+    }
 }
 
+// @todo: Re-work this style so we don't have to re-do the styles so many times (if possible)
 .sublime-header {
     border-radius: 0.25em 0.25em 0 0;
     background: url(../img/sublime-inner.png) top left no-repeat;
@@ -176,8 +181,17 @@ body.home #header
     padding-bottom: 60%;
     width: 100%;
 
+    // Give iPhone a little special love above
+    @media only screen and (min-width: 330px) {
+        background-size: 145%;
+    }
+
     @media only screen and (min-width: 500px) {
         background-size: 155%;
+    }
+
+    @media only screen and (min-width: 625px) {
+        background-size: 125%;
     }
 
     @media only screen and (min-width: 750px) {
@@ -185,6 +199,15 @@ body.home #header
         border-radius: 0.5em 0.5em 0 0;
         height: 355px;
         margin-top: 15px;
+    }
+
+    // Full size, before responsive linebreaks turn off
+    @media only screen and (min-width: 800px) and (max-width: 899px) {
+        background-size: 100%;
+    }
+
+    @media only screen and (min-width: 900px) {
+        margin-top: 35px;
     }
 }
 
@@ -301,7 +324,7 @@ body.dashboard #header
         @media only screen and (min-width: 750px) {
             clear: none;
             display: inline-block;
-            font-size: 1em;
+            font-size: 1.2em;
             padding: 15px 25px;
             margin-bottom: 1.25em;
             width: auto;
@@ -484,7 +507,7 @@ nav#primary
     }
 
     // @todo: Having only one max is confusing. This should be min.
-    @media only screen and (max-width: 759px) {
+    @media only screen and (max-width: 799px) {
         min-height: 3rem;
         opacity: 0.9;
         position: fixed;
