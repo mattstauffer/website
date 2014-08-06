@@ -362,8 +362,9 @@ body.dashboard #header
 
         a {
             background: #fff;
+            box-shadow: 1px 2px 0 rgba(0, 0, 0, 0.05);
             opacity: 0.6;
-            padding: 3px 8px;
+            padding: 5px 8px;
         }
 
         &.current a {
@@ -588,9 +589,7 @@ nav#primary
 
 .show-primary-nav {
     background: #fafafa;
-    border: 1px solid #fcfcfc;
-    border-bottom-color: #eee;
-    border-right-color: #eee;
+    box-shadow: 1px 2px 0 rgba(0, 0, 0, 0.1);
     display: block;
     float: right;
     font-size: 0.9em;
@@ -722,12 +721,12 @@ Pages
 #documentation {
     .docs-show {
         background: #fff;
-//        color: #777;
+        box-shadow: 1px 2px 0 rgba(0, 0, 0, 0.05);
         display: block;
         font-size: 0.9rem;
-        margin-bottom: 0.15em;
-        margin-top: 0.25em;
-        padding: 0.3em 0.6em;
+        margin-bottom: 0.5em;
+        margin-top: 0.9em;
+        padding: 0.4em 0.6em;
         width: 5rem;
         text-transform: uppercase;
 
