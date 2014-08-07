@@ -43,6 +43,7 @@ gulp.task('scripts', ['copy-scripts'], function() {
 	return gulp.src([
 		'source/js/libs/jquery.js',
 		'source/js/libs/run_prettify.js',
+		'source/js/libs/fastclick.js',
 		'source/js/plugins.js',
 		'source/js/application.js'
 		])

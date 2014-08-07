@@ -7,6 +7,11 @@ jQuery(document).ready(function($) {
         window_width = $(window).width();
     });
 
+    // Apply Fastclick to the page
+    window.addEventListener('load', function() {
+        FastClick.attach(document.body);
+    }, false);
+
     // select text inputs
     $('input[type=text], textarea').focus(function() {
         $(this).select();

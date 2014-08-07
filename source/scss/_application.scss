@@ -596,6 +596,8 @@ nav#primary
     padding: 0.25rem 0.75rem;
     text-transform: uppercase;
 
+    -ms-touch-action: none;
+
     @media only screen and (min-width: 750px) {
         display: none;
     }
@@ -727,6 +729,8 @@ Pages
         width: 4rem;
         text-align: center;
         text-transform: uppercase;
+
+        -ms-touch-action: none;
 
         @media only screen and (min-width: 500px) {
             font-size: 1.1rem;
