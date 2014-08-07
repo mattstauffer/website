@@ -38,6 +38,7 @@
         }(document,'script'));
     </script>
     @endif
+
 </head>
 
 @section('body_opening')
@@ -65,7 +66,7 @@
         </div>
     </section>
 
-	<script src="/assets/js/bundle.js"></script>
+    <script src="/assets/js/bundle.js"></script>
 
 </body>
 </html>

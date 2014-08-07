@@ -2,7 +2,7 @@
 
 @section('body_opening')
 <body id="index" class="page home">
-@show
+@endsection
 
 @section('content')
 <header id="header" role="header">
