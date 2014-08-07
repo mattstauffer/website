@@ -35,6 +35,7 @@
 
  - Responsive @todo: Create mixins for some of the breakpoints with view logic.
    E.g. unfixed-header(CSS HERE)
+ - @todo: Consider merging 750px and 800px breakpoints across the board
 */
 /*
 ----------------------------------------------------------
@@ -140,7 +141,6 @@ Header
     width: 100%;
     z-index: 20;
 
-    // @todo: Consider merging 750 and 800 across the board
     @media only screen and (min-width: 750px) {
         height: 140px;
     }
@@ -173,7 +173,6 @@ body.home #header
     }
 }
 
-// @todo: Re-work this style so we don't have to re-do the styles so many times (if possible)
 .sublime-header {
     border-radius: 0.25em 0.25em 0 0;
     background: url(../img/sublime-inner.png) top left no-repeat;
@@ -492,8 +491,9 @@ nav#primary
     border-bottom: 1px solid #e5e5e5;
     box-shadow: 0 -5px 0 rgba(0, 0, 0, 0.03);
     float: left;
-    min-height: 4.35em;
-    position: relative;
+    min-height: 3rem;
+    position: fixed;
+    top: 0;
     z-index: 999;
     width: 100%;
 
@@ -507,12 +507,9 @@ nav#primary
         opacity: 1;
     }
 
-    // @todo: Having only one max is confusing. This should be min.
-    @media only screen and (max-width: 799px) {
-        min-height: 3rem;
-//        opacity: 0.9;
-        position: fixed;
-        top: 0;
+    @media only screen and (min-width: 800px) {
+        min-height: 4.35em;
+        position: relative;
     }
 }
 
@@ -755,7 +752,9 @@ Pages
         }
 
         #docs-content {
-            transform: translateX(220px);
+            @media only screen and (max-width: 1023px) {
+                transform: translateX(220px);
+            }
         }
     }
 
@@ -832,6 +831,7 @@ Pages
 
     #docs-content {
         background: #fffefe;
+        box-sizing: border-box;
         padding: 20px;
 
         @media only screen and (min-width: 750px) {
@@ -843,7 +843,7 @@ Pages
             float: right;
             padding-left: 50px;
             padding-right: 50px;
-            width: 724px;
+            width: 790px;
         }
 
         h1 {
