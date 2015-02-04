@@ -101,6 +101,21 @@ Route::get('docs/4-2', function()
 });
 
 /**
+ * Faux search route...
+ */
+Route::get('docs/fakeSearch', function()
+{
+	$keyword = 'provider';
+
+	/** @var LaravelWebSite\DocSearchService $client */
+	$client = App::make('LaravelWebSite\DocSearchService');
+
+	return View::make('layouts.docsSearchResults')
+		->with('hits', $client->searchForTerm($keyword))
+		->with('keyword', $keyword);
+});
+
+/**
  * Main Documentation Route...
  */
 Route::get('docs/{page?}', function($page = null)

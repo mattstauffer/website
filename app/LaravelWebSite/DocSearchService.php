@@ -2,6 +2,7 @@
 
 use dflydev\markdown\MarkdownExtraParser;
 use Elasticsearch\Client;
+use Elasticsearch\Common\Exceptions\Missing404Exception;
 use Illuminate\Filesystem\Filesystem;
 
 class DocSearchService {
@@ -21,9 +22,14 @@ class DocSearchService {
 	 */
 	private $files;
 
-	private $indexName = 'docs';
+	private $indexName;
 
 	private $docsPath;
+
+	private $noIndex = [
+		'documentation',
+		'license'
+	];
 
 	// @todo: Consider passing docsVersion into the individual methods
 	public function __construct($docsVersion = 'master', Client $client, MarkdownExtraParser $markdown, Filesystem $files)
@@ -33,6 +39,31 @@ class DocSearchService {
 		$this->files = $files;
 
 		$this->docsPath = base_path() . '/docs/' . $docsVersion;
+		$this->indexName = 'docs.' . $docsVersion;
+	}
+
+	/**
+	 * @todo Make the search broader--for example, include and value more highly the title
+	 * @todo Make the search smarter--for example, care more about h2s, h3s, etc.
+	 * @param string $term
+	 * @return array
+	 * @throws \Exception
+	 */
+	public function searchForTerm($term)
+	{
+		$params['index'] = $this->indexName;
+		$params['type'] = 'page';
+		$params['body']['query']['match']['body.md'] = $term;
+
+		try {
+			$response = $this->client->search($params);
+		} catch (Missing404Exception $e) {
+			throw new \Exception('ElasticSearch Index was not initialized.');
+		}
+
+		// @todo Validate response
+
+		return $response['hits']['hits'];
 	}
 
 	/**
@@ -50,7 +81,7 @@ class DocSearchService {
 	}
 
 	/**
-	 * Index all docs
+	 * Index all docs for this version
 	 */
 	public function indexAllDocuments()
 	{
@@ -58,7 +89,10 @@ class DocSearchService {
 
 		foreach ($docs as $path)
 		{
-			$this->indexDocument($path);
+			if (! in_array($this->getSlugFromPath($path), $this->noIndex))
+			{
+				$this->indexDocument($path);
+			}
 		}
 	}
 
@@ -72,11 +106,12 @@ class DocSearchService {
 		$slug = $this->getSlugFromPath($path);
 		$markdown = $this->getFileContents($path);
 		$html = $this->convertMarkdownToHtml($markdown);
+		$title = $this->extractTitleFromMarkdown($markdown);
 
 		$params['index'] = $this->indexName;
 		$params['body'] = [
 			'slug' => $slug,
-			'title' => '@todo',
+			'title' => $title,
 			'body.html' => $html,
 			'body.md' => $markdown,
 		];
@@ -85,7 +120,7 @@ class DocSearchService {
 
 		$return = $this->client->index($params);
 
-		echo "Indexed $slug";
+		echo "Indexed $slug\n";
 	}
 
 	/**
@@ -128,6 +163,18 @@ class DocSearchService {
 	private function convertMarkdownToHtml($markdown)
 	{
 		return $this->markdown->transformMarkdown($markdown);
+	}
+
+	/**
+	 * @param string $markdown
+	 * @return string
+	 */
+	private function extractTitleFromMarkdown($markdown)
+	{
+		preg_match_all("/^# (.*)$/m", $markdown, $m);
+
+		if (empty($m[1])) dd($m);
+		return $m[1][0];
 	}
 
 	/**

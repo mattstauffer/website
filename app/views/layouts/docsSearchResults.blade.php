@@ -1,0 +1,110 @@
+@extends('layouts.master')
+
+@section('content')
+{{-- Of course, this needs to be merged with docs.blade.php--}}
+<header id="header" role="header">
+    <div class="boxed">
+        <div id="tagline">
+            <h1>Documentation.</h1>
+        </div>
+
+        <div id="version">
+            <ul class="nolist">
+                {{--
+                @foreach ($docs_versions as $doc_key => $doc_version)
+                    <li class="{{{ DOCS_VERSION == $doc_key ? 'current' : '' }}}">
+                        <a href="{{ url('docs/' . $doc_version['url_key']) }}" title="{{ $doc_version['title'] }}">{{ $doc_version['title'] }}</a>
+                    </li>
+                @endforeach
+                --}}
+            </ul>
+        </div>
+    </div>
+</header>
+
+<nav id="primary">
+    <div class="boxed">
+        <div id="logo-head">
+            <a href="//laravel.com"><img src="../assets/img/logo-head.png" alt="Laravel"></a>
+        </div>
+        <ul class="primary-nav-ul">
+            <li><a href="/">Welcome</a></li>
+            <li><a href="https://forge.laravel.com">Hosting</a></li>
+            <li class="current-item"><a href="docs" title="Documentation">Documentation</a></li>
+            <li><a href="{{ url('api') }}/{{ DOCS_VERSION }}" title="Laravel Framework API">API</a></li>
+            <li><a href="https://github.com/laravel/laravel" title="Github">Github</a></li>
+            <li><a href="http://laravel.io/forum" title="Laravel Forums">Forums</a></li>
+            <li><a href="http://twitter.com/laravelphp" title="Laravel on Twitter">Twitter</a></li>
+        </ul>
+        <a href="#" class="show-primary-nav">Menu</a>
+    </div>
+</nav>
+
+<div id="content">
+
+    <section id="documentation">
+        <article class="boxed">
+
+            {{--
+            <ul class="version-picker--mobile nolist">
+                @foreach ($docs_versions as $doc_key => $doc_version)
+                <li class="{{{ DOCS_VERSION == $doc_key ? 'current' : '' }}}">
+                    <a href="{{ url('docs/' . $doc_version['url_key']) }}" title="{{ $doc_version['title'] }}">{{ $doc_version['title'] }}</a>
+                </li>
+                @endforeach
+            </ul>
+            --}}
+            <a href="#" class="docs-show" data-show-text="Navigate" data-hide-text="Close">Navigate</a>
+
+            {{--
+            <nav id="docs">
+                {{ $index }}
+            </nav>
+
+            <div id="docs-content">
+                {{ $contents }}
+            </div>
+            --}}
+
+            <div id="docs-content">
+                <ul>
+                    <h1>Search results for term "{{{ $keyword }}}"</h1>
+                @foreach ($hits as $hit)
+                    <li><a href="{{ url('docs/' . $hit['_source']['slug']) }}/">{{ $hit['_source']['title'] }}</a> (Relevance: {{ $hit['_score'] * 100 }}%)</li>
+                @endforeach
+                </ul>
+            </div>
+
+        </article>
+    </section>
+
+</div>
+
+<footer id="foot" class="textcenter">
+    <div class="boxed">
+
+        <nav id="secondary">
+            <div id="logo-foot">
+                <a href="//laravel.com"><img src="../assets/img/logo-foot.png" alt="Laravel"></a>
+            </div>
+            <ul>
+                <li><a href="/">Welcome</a></li>
+                <li><a href="https://forge.laravel.com">Hosting</a></li>
+                <li class="current-item"><a href="docs" title="Documentation">Documentation</a></li>
+                <li><a href="api/{{ DOCS_VERSION }}" title="Laravel Framework API">API</a></li>
+                <li><a href="https://github.com/laravel/laravel" title="Github">Github</a></li>
+                <li><a href="http://laravel.io/forum" title="Laravel Forums">Forums</a></li>
+                <li><a href="http://twitter.com/laravelphp" title="Laravel on Twitter">Twitter</a></li>
+            </ul>
+        </nav>
+
+    </div>
+</footer>
+
+<div id="top">
+    <a href="#index" title="Back to the top">
+        <i class="icon-chevron-up"></i>
+    </a>
+</div>
+
+@endsection
