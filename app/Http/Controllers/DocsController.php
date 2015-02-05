@@ -58,6 +58,35 @@ class DocsController extends Controller {
 	}
 
 	/**
+	 * Show search results
+	 * 
+	 * @return Response
+	 */
+	public function search($version)
+	{
+		if (! $keyword = \Input::get('keyword'))
+		{
+			return \Redirect::to('docs/' . $version);
+		}
+
+
+		/** @var App\DocSearchService $client */
+		$client = \App::make('App\DocSearchService');
+
+		$content = view('partials.search-results', [
+			'hits' => $client->searchForTerm($version, $keyword),
+			'keyword' => $keyword,
+		]);
+
+		return view('docs', [
+			'index' => $this->docs->getIndex($version),
+			'content' => $content,
+			'currentVersion' => $version,
+			'versions' => $this->getDocVersions(),
+		]);
+	}
+
+	/**
 	 * Determine if the given URL segment is a valid version.
 	 *
 	 * @param  string  $version
@@ -75,12 +104,7 @@ class DocsController extends Controller {
 	 */
 	protected function getDocVersions()
 	{
-		return [
-			'master' => 'Master',
-			'4.2' => '4.2',
-			'4.1' => '4.1',
-			'4.0' => '4.0',
-		];
+		return Documentation::getDocVersions();
 	}
 
 }

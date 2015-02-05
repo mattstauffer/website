@@ -67,4 +67,18 @@ class Documentation {
 		});
 	}
 
+	/**
+	 * Get the publicly available versions of the documentation
+	 *
+	 * @return array
+	 */
+	public static function getDocVersions()
+	{
+		return [
+			'master' => 'Master',
+			'4.2' => '4.2',
+			'4.1' => '4.1',
+			'4.0' => '4.0',
+		];
+	}
 }

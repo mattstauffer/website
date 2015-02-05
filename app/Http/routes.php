@@ -28,4 +28,5 @@ get('/', function() {
 });
 
 get('docs', 'DocsController@showRootPage');
+get('docs/{version}/search', 'DocsController@search');
 get('docs/{version}/{page?}', 'DocsController@show');

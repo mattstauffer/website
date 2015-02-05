@@ -16,6 +16,7 @@
 
 	<div class="slide-docs-nav">
 		<h2>Documentation</h2>
+		@include('partials.search-form')
 		{!! $index !!}
 	</div>
 
@@ -24,6 +25,7 @@
 <div class="docs-wrapper container">
 
 	<section class="sidebar">
+		@include('partials.search-form')
 		{!! $index !!}
 	</section>
 
