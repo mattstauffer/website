@@ -72,9 +72,14 @@ class DocsController extends Controller {
 		/** @var App\Services\Documentation\Searcher $client */
 		$client = \App::make('App\Services\Documentation\Searcher');
 
+		$hits = $client->searchForTerm($version, $keyword);
+
 		$content = view('partials.search-results', [
-			'hits' => $client->searchForTerm($version, $keyword),
+			'hits' => $hits,
 			'keyword' => $keyword,
+			'totalScore' => array_reduce($hits, function($carry, $item) {
+				return $carry + $item['_score'];
+			})
 		]);
 
 		return view('docs', [

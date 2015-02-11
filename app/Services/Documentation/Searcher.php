@@ -16,7 +16,6 @@ class Searcher {
 	}
 
 	/**
-	 * @todo Make the search broader--for example, include and value more highly the title
 	 * @todo Make the search smarter--for example, care more about h2s, h3s, etc.
 	 * @param  string $version
 	 * @param  string $term
@@ -27,7 +26,12 @@ class Searcher {
 	{
 		$params['index'] = $this->getIndexName($version);
 		$params['type'] = 'page';
-		$params['body']['query']['match']['body.md'] = $term;
+
+		$params['body']['query']['multi_match']['query'] = $term;
+		$params['body']['query']['multi_match']['fields'] = [
+			"title^3", // Boost title's importance by 3
+			"body.md"
+		];
 
 		try {
 			$response = $this->client->search($params);

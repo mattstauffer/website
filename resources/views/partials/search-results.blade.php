@@ -4,7 +4,7 @@
     <ul>
         @foreach ($hits as $hit)
             <li><a href="{{ url('docs/' . $hit['_source']['slug']) }}/">{{ $hit['_source']['title'] }}</a>
-                (Relevance: {{ sprintf("%01.2f", $hit['_score'] * 100) }}%)
+                (Score: {{ sprintf("%01.2f", $hit['_score'] * 100 / $totalScore) }})
             </li>
         @endforeach
     </ul>
