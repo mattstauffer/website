@@ -69,9 +69,8 @@ class DocsController extends Controller {
 			return \Redirect::to('docs/' . $version);
 		}
 
-
-		/** @var App\DocSearchService $client */
-		$client = \App::make('App\DocSearchService');
+		/** @var App\Services\Documentation\Searcher $client */
+		$client = \App::make('App\Services\Documentation\Searcher');
 
 		$content = view('partials.search-results', [
 			'hits' => $client->searchForTerm($version, $keyword),

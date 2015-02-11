@@ -1,15 +1,15 @@
-<?php namespace App;
+<?php namespace App\Services\Documentation;
 
+use App\Documentation;
 use Elasticsearch\Client;
 use Elasticsearch\Common\Exceptions\BadRequest400Exception;
-use Elasticsearch\Common\Exceptions\Missing404Exception;
 use Illuminate\Filesystem\Filesystem;
 use ParsedownExtra;
 
 /**
  * @todo Separate this into an indexer and a searcher
  */
-class DocSearchService {
+class Indexer {
 
 	/**
 	 * @var Client
@@ -36,31 +36,6 @@ class DocSearchService {
 		$this->client = $client;
 		$this->markdown = $markdown;
 		$this->files = $files;
-	}
-
-	/**
-	 * @todo Make the search broader--for example, include and value more highly the title
-	 * @todo Make the search smarter--for example, care more about h2s, h3s, etc.
-	 * @param  string $version
-	 * @param  string $term
-	 * @return array
-	 * @throws \Exception
-	 */
-	public function searchForTerm($version, $term)
-	{
-		$params['index'] = $this->getIndexName($version);
-		$params['type'] = 'page';
-		$params['body']['query']['match']['body.md'] = $term;
-
-		try {
-			$response = $this->client->search($params);
-		} catch (Missing404Exception $e) {
-			throw new \Exception('ElasticSearch Index was not initialized.');
-		}
-
-		// @todo Validate response
-
-		return $response['hits']['hits'];
 	}
 
 	/**
